@@ -19,7 +19,7 @@ final class PopForm_ViewController: UIViewController {
     tv.dataSource = viewModel
     tv.backgroundColor = viewModel.dataSource.theme.backgroundColor
     tv.translatesAutoresizingMaskIntoConstraints = false
-    tv.register(FormTextField.self, forCellReuseIdentifier: FormTextField.ReuseID)
+    tv.register(FormTableViewCell.self, forCellReuseIdentifier: FormTableViewCell.ReuseID)
     view.addSubview(tv)
     return tv
   }()

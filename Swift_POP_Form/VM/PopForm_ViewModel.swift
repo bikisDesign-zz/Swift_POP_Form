@@ -22,6 +22,8 @@ final class PopForm_ViewModel: NSObject {
   
   var dataSource: PopForm_DataSource
   
+  var activeTextFieldIndex: Int?
+  
   init(dataSource: PopForm_DataSource){
     self.dataSource = dataSource
     super.init()
@@ -34,9 +36,9 @@ final class PopForm_ViewModel: NSObject {
 
 extension PopForm_ViewModel:  UITableViewDataSource  {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    var cell: FormTextField!
-        cell = tableView.dequeueReusableCell(withIdentifier: FormTextField.ReuseID,
-                                             for: indexPath) as? FormTextField ?? FormTextField()
+    var cell: FormTableViewCell!
+        cell = tableView.dequeueReusableCell(withIdentifier: FormTableViewCell.ReuseID,
+                                             for: indexPath) as? FormTableViewCell ?? FormTableViewCell()
     
     let field = cell.setView(for: dataSource.fields[indexPath.row])
     
