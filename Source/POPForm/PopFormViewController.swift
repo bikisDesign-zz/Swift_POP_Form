@@ -32,7 +32,7 @@ final class PopForm_ViewController: UIViewController {
     tv.dataSource = viewModel
     tv.backgroundColor = viewModel.dataSource.theme.backgroundColor
     tv.translatesAutoresizingMaskIntoConstraints = false
-    tv.register(FormTableViewCell.self, forCellReuseIdentifier: FormTableViewCell.ReuseID)
+    tv.register(PopForm_TableViewCell.self, forCellReuseIdentifier: PopForm_TableViewCell.ReuseID)
     view.addSubview(tv)
     return tv
   }()
@@ -85,7 +85,7 @@ extension PopForm_ViewController: PopForm_ViewModelDelegate {
 extension PopForm_ViewController: UITextFieldDelegate {
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    guard let cell = textField.superview as? FormTableViewCell else {
+    guard let cell = textField.superview as? PopForm_TableViewCell else {
       fatalError() }
     
     guard let currentIndex = tableView.indexPath(for: cell) else {
@@ -102,7 +102,7 @@ extension PopForm_ViewController: UITextFieldDelegate {
       return true
     }
     
-    guard let nextCell = tableView.cellForRow(at: nextIndex) as? FormTableViewCell else {
+    guard let nextCell = tableView.cellForRow(at: nextIndex) as? PopForm_TableViewCell else {
       fatalError() }
     
     nextCell.textField.becomeFirstResponder()

@@ -8,17 +8,17 @@
 
 import UIKit
 
-final class FormTableViewCell: UITableViewCell {
+final class PopForm_TableViewCell: UITableViewCell {
   
   static var ReuseID: String = "FormTextFieldCell"
   
   override var reuseIdentifier: String? {
-    return FormTableViewCell.ReuseID
+    return PopForm_TableViewCell.ReuseID
   }
   
   
-  lazy var textField: FormTextField = {
-    let tf = FormTextField()
+  lazy var textField: PopForm_TextField = {
+    let tf = PopForm_TextField()
     addSubview(tf)
     tf.translatesAutoresizingMaskIntoConstraints = false
     tf.topAnchor.constraint(equalTo: topAnchor).isActive = true

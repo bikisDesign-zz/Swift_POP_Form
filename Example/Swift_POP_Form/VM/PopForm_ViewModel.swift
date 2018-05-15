@@ -26,9 +26,9 @@ final class PopForm_ViewModel: NSObject {
 
 extension PopForm_ViewModel:  UITableViewDataSource  {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    var cell: FormTableViewCell!
-        cell = tableView.dequeueReusableCell(withIdentifier: FormTableViewCell.ReuseID,
-                                             for: indexPath) as? FormTableViewCell ?? FormTableViewCell()
+    var cell: PopForm_TableViewCell!
+        cell = tableView.dequeueReusableCell(withIdentifier: PopForm_TableViewCell.ReuseID,
+                                             for: indexPath) as? PopForm_TableViewCell ?? PopForm_TableViewCell()
     
     let field = cell.setView(for: dataSource.fields[indexPath.row])
     

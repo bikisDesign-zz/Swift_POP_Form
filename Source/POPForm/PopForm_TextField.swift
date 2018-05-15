@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FormTextField: UITextField {
+final class PopForm_TextField: UITextField {
   
   var dataSource: PopForm_FieldDataSource? {
     didSet {
