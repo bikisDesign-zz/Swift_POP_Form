@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias PopForm_ValidationCallback = (Bool, [String]?)
-
 protocol PopForm_ViewModelDelegate: class {
   func registerForValidation(validatable: UITextField, rules: [Rule])
 }
@@ -44,13 +42,3 @@ extension PopForm_ViewModel:  UITableViewDataSource  {
     return dataSource.fields.count
   }
 }
-
-//extension PopForm_ViewModel: ValidationDelegate {
-//  func validationSuccessful() {
-//    delegate?.formWasValidated((true, nil))
-//  }
-//
-//  func validationFailed(_ errors: [(Validatable, ValidationError)]) {
-//    delegate?.formWasValidated((false, errors.map({ $0.1.errorMessage })))
-//  }
-//}

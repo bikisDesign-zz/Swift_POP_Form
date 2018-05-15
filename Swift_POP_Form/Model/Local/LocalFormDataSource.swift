@@ -9,6 +9,7 @@
 import UIKit
 import RP_iosBootstrap
 
+
 struct LocalFormDataSource: PopForm_DataSource {
   var fields: PopForm_Fields = [FirstNameField(),
                                 LastNameField(),
@@ -16,6 +17,7 @@ struct LocalFormDataSource: PopForm_DataSource {
   
   var theme: PopForm_Theme = FormTheme()
 }
+
 
 private struct FormTheme: PopForm_Theme {
   var backgroundColor: UIColor = UIColor(r: 64, g: 196, b: 255)
@@ -39,6 +41,7 @@ private struct TextFieldTheme: PopForm_FieldTheme {
 }
 
 
+
 private struct FirstNameField: PopForm_FieldDataSource {
   var theme: PopForm_FieldTheme = TextFieldTheme()
   var apiKey: String = "first_name"
@@ -47,12 +50,14 @@ private struct FirstNameField: PopForm_FieldDataSource {
   var returnKey: UIReturnKeyType = UIReturnKeyType.next
 }
 
+
 private struct LastNameField: PopForm_FieldDataSource {
   var theme: PopForm_FieldTheme = TextFieldTheme()
   var apiKey: String = "last_name"
   var placeholder: String = "Last Name"
   var returnKey: UIReturnKeyType = UIReturnKeyType.next
 }
+
 
 private struct PasswordField: PopForm_FieldDataSource {
   var theme: PopForm_FieldTheme = TextFieldTheme()

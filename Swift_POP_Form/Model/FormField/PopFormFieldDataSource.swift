@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// The protocol of all PopFormFields
-/// Create instances that conform to this protocol to create the dataSource for PopFormViewController's ViewModel
+/// The data source of all fields in a PopForm
+/// Create instances that conform to this protocol and use them to create an instance of *PopForm_Datasource* for PopForm_ViewController's ViewModel
 protocol PopForm_FieldDataSource {
   
   /// The Field's Theme

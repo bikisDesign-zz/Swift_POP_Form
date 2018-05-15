@@ -9,7 +9,20 @@
 import UIKit
 import RP_iosBootstrap
 
+
+typealias PopForm_ValidationCallback = (Bool, [String]?)
+
+protocol PopForm_ViewControllerDelegate: class {
+  func formWasValidated(callback: PopForm_ValidationCallback)
+}
+
+/// Can be either embeded in another VC or presented on its own.
+/// By setting up the whole datasource elsewhere you can pass in an instance of *PopForm_DataSource* to create an instance of this viewcontroller
 final class PopForm_ViewController: UIViewController {
+  
+  weak var delegate: PopForm_ViewControllerDelegate?
+  
+  var shouldValidateOnLastFieldReturnKeyTap = true
   
   private var viewModel: PopForm_ViewModel
  
@@ -46,6 +59,10 @@ final class PopForm_ViewController: UIViewController {
     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
   }
+  
+  func validateForm(){
+    validator.validate(self)
+  }
 }
 
 
@@ -77,6 +94,9 @@ extension PopForm_ViewController: UITextFieldDelegate {
     
     if isLastField {
       cell.textField.resignFirstResponder()
+      if shouldValidateOnLastFieldReturnKeyTap {
+        validator.validate(self)
+      }
       return true
     }
     
@@ -85,5 +105,15 @@ extension PopForm_ViewController: UITextFieldDelegate {
     
     nextCell.textField.becomeFirstResponder()
     return true
+  }
+}
+
+extension PopForm_ViewController: ValidationDelegate {
+  func validationSuccessful() {
+    delegate?.formWasValidated(callback: (true, nil))
+  }
+
+  func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+    delegate?.formWasValidated(callback: (false, errors.map({ $0.1.errorMessage })))
   }
 }

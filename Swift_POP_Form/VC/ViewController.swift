@@ -13,6 +13,7 @@ class ViewController: UIViewController {
   
   lazy var form: PopForm_ViewController = {
     let form = PopForm_ViewController(dataSource: self.formDataSource)
+    form.delegate = self
     return form
   }()
   
@@ -30,5 +31,11 @@ class ViewController: UIViewController {
     
     let totalFormHeight = formDataSource.fields.reduce(CGFloat(0), { $0 + $1.theme.height })
     form.view.heightAnchor.constraint(equalToConstant: totalFormHeight).isActive = true
+  }
+}
+
+extension ViewController: PopForm_ViewControllerDelegate {
+  func formWasValidated(callback: PopForm_ValidationCallback) {
+    print(callback)
   }
 }

@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// The general theme of every form
+/// currently supports backgroundColor and formColor
 protocol PopForm_Theme {
   var backgroundColor: UIColor { get }
   var formColor: UIColor { get }
