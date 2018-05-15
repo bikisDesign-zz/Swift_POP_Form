@@ -49,6 +49,7 @@ final class PopForm_ViewController: UIViewController {
     fatalError("init(coder: not supported")
   }
   
+  
   override func loadView() {
     view = UIView()
     view.backgroundColor = UIColor.white // add to theme
@@ -59,6 +60,7 @@ final class PopForm_ViewController: UIViewController {
     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
   }
+  
   
   func validateForm(){
     validator.validate(self)
