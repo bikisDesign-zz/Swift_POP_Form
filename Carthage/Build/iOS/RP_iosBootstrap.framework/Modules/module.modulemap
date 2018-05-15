@@ -1,0 +1,4 @@
+framework module RP_iosBootstrap {
+    header "RP_iosBootstrap-Swift.h"
+    requires objc
+}
