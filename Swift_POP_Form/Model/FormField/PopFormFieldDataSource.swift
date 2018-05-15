@@ -40,6 +40,10 @@ protocol PopForm_FieldDataSource {
   /// If the field should have secure entry
   /// - Remark: default is *false*
   var isSecureEntry: Bool { get }
+  
+  /// The return key type for the field.
+  /// - Remark: default is .default
+  var returnKey: UIReturnKeyType { get }
 }
 
 
@@ -54,4 +58,6 @@ extension PopForm_FieldDataSource {
   var isSecureEntry: Bool { return false }
   
   var stockData: String { return "" }
+  
+  var returnKey: UIReturnKeyType { return UIReturnKeyType.default }
 }

@@ -44,12 +44,14 @@ private struct FirstNameField: PopForm_FieldDataSource {
   var apiKey: String = "first_name"
   var placeholder: String = "First Name"
   var validationRule: [Rule]? = [AlphaRule()]
+  var returnKey: UIReturnKeyType = UIReturnKeyType.next
 }
 
 private struct LastNameField: PopForm_FieldDataSource {
   var theme: PopForm_FieldTheme = TextFieldTheme()
   var apiKey: String = "last_name"
   var placeholder: String = "Last Name"
+  var returnKey: UIReturnKeyType = UIReturnKeyType.next
 }
 
 private struct PasswordField: PopForm_FieldDataSource {
@@ -58,5 +60,6 @@ private struct PasswordField: PopForm_FieldDataSource {
   var placeholder: String = "Password"
   var validationRule: [Rule]? = [PasswordRule()]
   var isSecureEntry: Bool = true
+  var returnKey: UIReturnKeyType = UIReturnKeyType.done
 }
 

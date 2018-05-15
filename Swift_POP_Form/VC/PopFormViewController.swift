@@ -24,10 +24,13 @@ final class PopForm_ViewController: UIViewController {
     return tv
   }()
   
+  private var validator = Validator()
+  
   
   init(dataSource: PopForm_DataSource){
     self.viewModel = PopForm_ViewModel(dataSource: dataSource)
     super.init(nibName: nil, bundle: nil)
+    self.viewModel.delegate = self
   }
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder: not supported")
@@ -50,5 +53,37 @@ extension PopForm_ViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return viewModel.dataSource.fields[indexPath.row].theme.height
+  }
+}
+
+extension PopForm_ViewController: PopForm_ViewModelDelegate {
+  func registerForValidation(validatable: UITextField, rules: [Rule]) {
+    validator.registerField(validatable, rules: rules)
+    validatable.delegate = self
+  }
+}
+
+extension PopForm_ViewController: UITextFieldDelegate {
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    guard let cell = textField.superview as? FormTableViewCell else {
+      fatalError() }
+    
+    guard let currentIndex = tableView.indexPath(for: cell) else {
+      fatalError("cell does not exist") }
+    
+    let nextIndex = IndexPath(row: currentIndex.row + 1, section: currentIndex.section)
+    let isLastField = viewModel.dataSource.fields.count == nextIndex.row
+    
+    if isLastField {
+      cell.textField.resignFirstResponder()
+      return true
+    }
+    
+    guard let nextCell = tableView.cellForRow(at: nextIndex) as? FormTableViewCell else {
+      fatalError() }
+    
+    nextCell.textField.becomeFirstResponder()
+    return true
   }
 }

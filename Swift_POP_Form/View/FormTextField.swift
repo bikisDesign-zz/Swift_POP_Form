@@ -12,9 +12,10 @@ final class FormTextField: UITextField {
   
   var dataSource: PopForm_FieldDataSource? {
     didSet {
-      backgroundColor = dataSource.theme.backgroundColor
-      placeholder = dataSource.placeholder
-      textField.text = dataSource.stockData
+      backgroundColor = dataSource?.theme.backgroundColor
+      placeholder = dataSource?.placeholder
+      text = dataSource?.stockData
+      returnKeyType = dataSource?.returnKey ?? UIReturnKeyType.default
     }
   }
 }

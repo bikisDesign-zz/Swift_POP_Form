@@ -11,26 +11,18 @@ import UIKit
 typealias PopForm_ValidationCallback = (Bool, [String]?)
 
 protocol PopForm_ViewModelDelegate: class {
-  func formWasValidated(_ successfully: PopForm_ValidationCallback)
+  func registerForValidation(validatable: UITextField, rules: [Rule])
 }
 
 final class PopForm_ViewModel: NSObject {
   
   var delegate: PopForm_ViewModelDelegate?
   
-  private lazy var validator = Validator()
-  
   var dataSource: PopForm_DataSource
-  
-  var activeTextFieldIndex: Int?
   
   init(dataSource: PopForm_DataSource){
     self.dataSource = dataSource
     super.init()
-  }
-  
-  func validateForm(){
-    validator.validate(self)
   }
 }
 
@@ -43,7 +35,7 @@ extension PopForm_ViewModel:  UITableViewDataSource  {
     let field = cell.setView(for: dataSource.fields[indexPath.row])
     
     if let rules = dataSource.fields[indexPath.row].validationRule {
-      validator.registerField(field, rules: rules)
+      delegate?.registerForValidation(validatable: field, rules: rules)
     }
     return cell
   }
@@ -53,12 +45,12 @@ extension PopForm_ViewModel:  UITableViewDataSource  {
   }
 }
 
-extension PopForm_ViewModel: ValidationDelegate {
-  func validationSuccessful() {
-    delegate?.formWasValidated((true, nil))
-  }
-  
-  func validationFailed(_ errors: [(Validatable, ValidationError)]) {
-    delegate?.formWasValidated((false, errors.map({ $0.1.errorMessage })))
-  }
-}
+//extension PopForm_ViewModel: ValidationDelegate {
+//  func validationSuccessful() {
+//    delegate?.formWasValidated((true, nil))
+//  }
+//
+//  func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+//    delegate?.formWasValidated((false, errors.map({ $0.1.errorMessage })))
+//  }
+//}
