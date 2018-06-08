@@ -10,17 +10,17 @@ import UIKit
 import RP_iosBootstrap
 
 
-typealias PopForm_ValidationCallback = (Bool, [String]?)
+typealias PopFormViewControllerCallback = (Bool, [String]?)
 
-protocol PopForm_ViewControllerDelegate: class {
-  func formWasValidated(callback: PopForm_ValidationCallback)
+protocol PopFormViewControllerDelegate: class {
+  func formWasValidated(callback: PopFormViewControllerCallback)
 }
 
 /// Can be either embeded in another VC or presented on its own.
 /// By setting up the whole datasource elsewhere you can pass in an instance of *PopForm_DataSource* to create an instance of this viewcontroller
-final class PopForm_ViewController: UIViewController {
+final class PopFormViewController: UIViewController {
   
-  weak var delegate: PopForm_ViewControllerDelegate?
+  weak var delegate: PopFormViewControllerDelegate?
   
   var shouldValidateOnLastFieldReturnKeyTap = true
   
@@ -32,7 +32,7 @@ final class PopForm_ViewController: UIViewController {
     tv.dataSource = viewModel
     tv.backgroundColor = viewModel.dataSource.theme.backgroundColor
     tv.translatesAutoresizingMaskIntoConstraints = false
-    tv.register(PopForm_TableViewCell.self, forCellReuseIdentifier: PopForm_TableViewCell.ReuseID)
+    tv.register(PopFormTableViewCell.self, forCellReuseIdentifier: PopFormTableViewCell.ReuseID)
     view.addSubview(tv)
     return tv
   }()
@@ -40,7 +40,7 @@ final class PopForm_ViewController: UIViewController {
   private var validator = Validator()
   
   
-  init(dataSource: PopForm_DataSource){
+  init(dataSource: PopFormDataSource){
     self.viewModel = PopForm_ViewModel(dataSource: dataSource)
     super.init(nibName: nil, bundle: nil)
     self.viewModel.delegate = self
@@ -68,24 +68,24 @@ final class PopForm_ViewController: UIViewController {
 }
 
 
-extension PopForm_ViewController: UITableViewDelegate {
+extension PopFormViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return viewModel.dataSource.fields[indexPath.row].theme.height
   }
 }
 
-extension PopForm_ViewController: PopForm_ViewModelDelegate {
+extension PopFormViewController: PopForm_ViewModelDelegate {
   func registerForValidation(validatable: UITextField, rules: [Rule]) {
     validator.registerField(validatable, rules: rules)
     validatable.delegate = self
   }
 }
 
-extension PopForm_ViewController: UITextFieldDelegate {
+extension PopFormViewController: UITextFieldDelegate {
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    guard let cell = textField.superview as? PopForm_TableViewCell else {
+    guard let cell = textField.superview as? PopFormTableViewCell else {
       fatalError() }
     
     guard let currentIndex = tableView.indexPath(for: cell) else {
@@ -102,7 +102,7 @@ extension PopForm_ViewController: UITextFieldDelegate {
       return true
     }
     
-    guard let nextCell = tableView.cellForRow(at: nextIndex) as? PopForm_TableViewCell else {
+    guard let nextCell = tableView.cellForRow(at: nextIndex) as? PopFormTableViewCell else {
       fatalError() }
     
     nextCell.textField.becomeFirstResponder()
@@ -110,7 +110,7 @@ extension PopForm_ViewController: UITextFieldDelegate {
   }
 }
 
-extension PopForm_ViewController: ValidationDelegate {
+extension PopFormViewController: ValidationDelegate {
   func validationSuccessful() {
     delegate?.formWasValidated(callback: (true, nil))
   }

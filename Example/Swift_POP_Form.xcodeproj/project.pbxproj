@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8956B45620CB2650003A50E2 /* PopFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8956B45520CB2650003A50E2 /* PopFormViewModel.swift */; };
 		89C5B7DC20AA4CA500528950 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B7DB20AA4CA500528950 /* AppDelegate.swift */; };
 		89C5B7E320AA4CA900528950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89C5B7E220AA4CA900528950 /* Assets.xcassets */; };
 		89C5B7E620AA4CA900528950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C5B7E420AA4CA900528950 /* LaunchScreen.storyboard */; };
@@ -72,20 +73,18 @@
 		89C5B85420AA4EE400528950 /* ValidatorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B81A20AA4EE400528950 /* ValidatorDictionary.swift */; };
 		89C5B85820AA4F0700528950 /* RP_iosBootstrap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C5B85720AA4F0700528950 /* RP_iosBootstrap.framework */; };
 		89C5B85D20AA4FDC00528950 /* PopFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B85C20AA4FDC00528950 /* PopFormViewController.swift */; };
-		89C5B86120AA513C00528950 /* PopForm_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86020AA513C00528950 /* PopForm_TableViewCell.swift */; };
+		89C5B86120AA513C00528950 /* PopFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86020AA513C00528950 /* PopFormTableViewCell.swift */; };
 		89C5B86520AA530500528950 /* LocalFormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86420AA530500528950 /* LocalFormDataSource.swift */; };
 		89C5B86620AA530500528950 /* LocalFormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86420AA530500528950 /* LocalFormDataSource.swift */; };
-		89C5B86820AA53E000528950 /* PopForm_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86720AA53E000528950 /* PopForm_ViewModel.swift */; };
-		89C5B86920AA53E000528950 /* PopForm_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86720AA53E000528950 /* PopForm_ViewModel.swift */; };
 		89C5B86B20AA549A00528950 /* PopFormFieldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86A20AA549A00528950 /* PopFormFieldTheme.swift */; };
 		89C5B86C20AA549A00528950 /* PopFormFieldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86A20AA549A00528950 /* PopFormFieldTheme.swift */; };
-		89C5B87120AA5DB800528950 /* PopForm_DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87020AA5DB800528950 /* PopForm_DataSource.swift */; };
-		89C5B87220AA5DB800528950 /* PopForm_DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87020AA5DB800528950 /* PopForm_DataSource.swift */; };
-		89C5B87420AA5DE000528950 /* PopForm_Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87320AA5DE000528950 /* PopForm_Theme.swift */; };
-		89C5B87520AA5DE000528950 /* PopForm_Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87320AA5DE000528950 /* PopForm_Theme.swift */; };
+		89C5B87120AA5DB800528950 /* PopFormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87020AA5DB800528950 /* PopFormDataSource.swift */; };
+		89C5B87220AA5DB800528950 /* PopFormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87020AA5DB800528950 /* PopFormDataSource.swift */; };
+		89C5B87420AA5DE000528950 /* PopFormTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87320AA5DE000528950 /* PopFormTheme.swift */; };
+		89C5B87520AA5DE000528950 /* PopFormTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87320AA5DE000528950 /* PopFormTheme.swift */; };
 		89C5B87720AA5F8F00528950 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87620AA5F8F00528950 /* ViewController.swift */; };
 		89C5B87820AA5F8F00528950 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87620AA5F8F00528950 /* ViewController.swift */; };
-		89C5B87A20AA659A00528950 /* PopForm_TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87920AA659A00528950 /* PopForm_TextField.swift */; };
+		89C5B87A20AA659A00528950 /* PopFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87920AA659A00528950 /* PopFormTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8956B45520CB2650003A50E2 /* PopFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopFormViewModel.swift; sourceTree = "<group>"; };
 		89C5B7D820AA4CA500528950 /* Swift_POP_Form.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_POP_Form.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C5B7DB20AA4CA500528950 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89C5B7E220AA4CA900528950 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,14 +139,13 @@
 		89C5B81A20AA4EE400528950 /* ValidatorDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorDictionary.swift; sourceTree = "<group>"; };
 		89C5B85720AA4F0700528950 /* RP_iosBootstrap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RP_iosBootstrap.framework; path = Carthage/Build/iOS/RP_iosBootstrap.framework; sourceTree = "<group>"; };
 		89C5B85C20AA4FDC00528950 /* PopFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFormViewController.swift; sourceTree = "<group>"; };
-		89C5B86020AA513C00528950 /* PopForm_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopForm_TableViewCell.swift; sourceTree = "<group>"; };
+		89C5B86020AA513C00528950 /* PopFormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFormTableViewCell.swift; sourceTree = "<group>"; };
 		89C5B86420AA530500528950 /* LocalFormDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFormDataSource.swift; sourceTree = "<group>"; };
-		89C5B86720AA53E000528950 /* PopForm_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopForm_ViewModel.swift; sourceTree = "<group>"; };
 		89C5B86A20AA549A00528950 /* PopFormFieldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFormFieldTheme.swift; sourceTree = "<group>"; };
-		89C5B87020AA5DB800528950 /* PopForm_DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopForm_DataSource.swift; sourceTree = "<group>"; };
-		89C5B87320AA5DE000528950 /* PopForm_Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopForm_Theme.swift; sourceTree = "<group>"; };
+		89C5B87020AA5DB800528950 /* PopFormDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFormDataSource.swift; sourceTree = "<group>"; };
+		89C5B87320AA5DE000528950 /* PopFormTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFormTheme.swift; sourceTree = "<group>"; };
 		89C5B87620AA5F8F00528950 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		89C5B87920AA659A00528950 /* PopForm_TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopForm_TextField.swift; sourceTree = "<group>"; };
+		89C5B87920AA659A00528950 /* PopFormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFormTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +212,7 @@
 		89C5B7FD20AA4E5C00528950 /* VM */ = {
 			isa = PBXGroup;
 			children = (
-				89C5B86720AA53E000528950 /* PopForm_ViewModel.swift */,
+				8956B45520CB2650003A50E2 /* PopFormViewModel.swift */,
 			);
 			path = VM;
 			sourceTree = "<group>";
@@ -292,8 +291,8 @@
 		89C5B86320AA514100528950 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				89C5B87920AA659A00528950 /* PopForm_TextField.swift */,
-				89C5B86020AA513C00528950 /* PopForm_TableViewCell.swift */,
+				89C5B87920AA659A00528950 /* PopFormTextField.swift */,
+				89C5B86020AA513C00528950 /* PopFormTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,8 +300,8 @@
 		89C5B86D20AA54FD00528950 /* FormField */ = {
 			isa = PBXGroup;
 			children = (
-				89C5B87020AA5DB800528950 /* PopForm_DataSource.swift */,
-				89C5B87320AA5DE000528950 /* PopForm_Theme.swift */,
+				89C5B87020AA5DB800528950 /* PopFormDataSource.swift */,
+				89C5B87320AA5DE000528950 /* PopFormTheme.swift */,
 				89C5B86A20AA549A00528950 /* PopFormFieldTheme.swift */,
 				89C5B7FB20AA4E5900528950 /* PopFormFieldDataSource.swift */,
 			);
@@ -445,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8956B45620CB2650003A50E2 /* PopFormViewModel.swift in Sources */,
 				89C5B82920AA4EE400528950 /* ZipCodeRule.swift in Sources */,
 				89C5B82120AA4EE400528950 /* IPV4Rule.swift in Sources */,
 				89C5B81B20AA4EE400528950 /* MinDateRule.swift in Sources */,
@@ -456,14 +456,14 @@
 				89C5B82320AA4EE400528950 /* ValidationError.swift in Sources */,
 				89C5B84F20AA4EE400528950 /* ValidationRule.swift in Sources */,
 				89C5B82B20AA4EE400528950 /* AlphaRule.swift in Sources */,
-				89C5B87A20AA659A00528950 /* PopForm_TextField.swift in Sources */,
-				89C5B86120AA513C00528950 /* PopForm_TableViewCell.swift in Sources */,
+				89C5B87A20AA659A00528950 /* PopFormTextField.swift in Sources */,
+				89C5B86120AA513C00528950 /* PopFormTableViewCell.swift in Sources */,
 				89C5B81F20AA4EE400528950 /* MinLengthRule.swift in Sources */,
 				89C5B81D20AA4EE400528950 /* FullNameRule.swift in Sources */,
 				89C5B7FC20AA4E5900528950 /* PopFormFieldDataSource.swift in Sources */,
 				89C5B83520AA4EE400528950 /* ValidationDelegate.swift in Sources */,
 				89C5B85120AA4EE400528950 /* MaxLengthRule.swift in Sources */,
-				89C5B87120AA5DB800528950 /* PopForm_DataSource.swift in Sources */,
+				89C5B87120AA5DB800528950 /* PopFormDataSource.swift in Sources */,
 				89C5B82720AA4EE400528950 /* FloatRule.swift in Sources */,
 				89C5B83920AA4EE400528950 /* RoutingNumberRule.swift in Sources */,
 				89C5B83B20AA4EE400528950 /* Validator.swift in Sources */,
@@ -471,7 +471,6 @@
 				89C5B82F20AA4EE400528950 /* Rule.swift in Sources */,
 				89C5B83320AA4EE400528950 /* CharacterSetRule.swift in Sources */,
 				89C5B84D20AA4EE400528950 /* ConfirmRule.swift in Sources */,
-				89C5B86820AA53E000528950 /* PopForm_ViewModel.swift in Sources */,
 				89C5B86520AA530500528950 /* LocalFormDataSource.swift in Sources */,
 				89C5B84120AA4EE400528950 /* AlphaNumericRule.swift in Sources */,
 				89C5B7DC20AA4CA500528950 /* AppDelegate.swift in Sources */,
@@ -480,7 +479,7 @@
 				89C5B84920AA4EE400528950 /* PasswordRule.swift in Sources */,
 				89C5B82D20AA4EE400528950 /* ExactLengthRule.swift in Sources */,
 				89C5B84320AA4EE400528950 /* HexColorRule.swift in Sources */,
-				89C5B87420AA5DE000528950 /* PopForm_Theme.swift in Sources */,
+				89C5B87420AA5DE000528950 /* PopFormTheme.swift in Sources */,
 				89C5B84520AA4EE400528950 /* RegexRule.swift in Sources */,
 				89C5B83720AA4EE400528950 /* DateConvertable.swift in Sources */,
 				89C5B85320AA4EE400528950 /* ValidatorDictionary.swift in Sources */,
@@ -492,7 +491,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89C5B86920AA53E000528950 /* PopForm_ViewModel.swift in Sources */,
 				89C5B82820AA4EE400528950 /* FloatRule.swift in Sources */,
 				89C5B82020AA4EE400528950 /* MinLengthRule.swift in Sources */,
 				89C5B85420AA4EE400528950 /* ValidatorDictionary.swift in Sources */,
@@ -515,11 +513,11 @@
 				89C5B84820AA4EE400528950 /* Validatable.swift in Sources */,
 				89C5B84620AA4EE400528950 /* RegexRule.swift in Sources */,
 				89C5B84C20AA4EE400528950 /* PhoneNumberRule.swift in Sources */,
-				89C5B87220AA5DB800528950 /* PopForm_DataSource.swift in Sources */,
+				89C5B87220AA5DB800528950 /* PopFormDataSource.swift in Sources */,
 				89C5B7F120AA4CA900528950 /* Swift_POP_FormTests.swift in Sources */,
 				89C5B82C20AA4EE400528950 /* AlphaRule.swift in Sources */,
 				89C5B82620AA4EE400528950 /* EmailRule.swift in Sources */,
-				89C5B87520AA5DE000528950 /* PopForm_Theme.swift in Sources */,
+				89C5B87520AA5DE000528950 /* PopFormTheme.swift in Sources */,
 				89C5B83020AA4EE400528950 /* Rule.swift in Sources */,
 				89C5B84220AA4EE400528950 /* AlphaNumericRule.swift in Sources */,
 				89C5B87820AA5F8F00528950 /* ViewController.swift in Sources */,

@@ -8,11 +8,11 @@
 
 import Foundation
 
-typealias PopForm_Fields = [PopForm_FieldDataSource]
+typealias PopFormFields = [PopFormFieldDataSource]
 
 /// The primary data source for each form
 /// Create an array of *PopForm_Fields* and a *PopForm_Theme* to init
-protocol PopForm_DataSource {
-  var fields: PopForm_Fields { get }
-  var theme: PopForm_Theme { get }
+protocol PopFormDataSource {
+  var fields: PopFormFields { get }
+  var theme: PopFormTheme { get }
 }

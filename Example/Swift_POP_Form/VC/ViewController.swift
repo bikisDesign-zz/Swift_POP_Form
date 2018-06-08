@@ -11,8 +11,8 @@ import RP_iosBootstrap
 
 class ViewController: UIViewController {
   
-  lazy var form: PopForm_ViewController = {
-    let form = PopForm_ViewController(dataSource: self.formDataSource)
+  lazy var form: PopFormViewController = {
+    let form = PopFormViewController(dataSource: self.formDataSource)
     form.delegate = self
     return form
   }()
@@ -34,8 +34,8 @@ class ViewController: UIViewController {
   }
 }
 
-extension ViewController: PopForm_ViewControllerDelegate {
-  func formWasValidated(callback: PopForm_ValidationCallback) {
+extension ViewController: PopFormViewControllerDelegate {
+  func formWasValidated(callback: PopFormViewControllerCallback) {
     print(callback)
   }
 }

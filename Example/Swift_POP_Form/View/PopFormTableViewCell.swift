@@ -8,17 +8,17 @@
 
 import UIKit
 
-final class PopForm_TableViewCell: UITableViewCell {
+final class PopFormTableViewCell: UITableViewCell {
   
   static var ReuseID: String = "FormTextFieldCell"
   
   override var reuseIdentifier: String? {
-    return PopForm_TableViewCell.ReuseID
+    return PopFormTableViewCell.ReuseID
   }
   
   
-  lazy var textField: PopForm_TextField = {
-    let tf = PopForm_TextField()
+  lazy var textField: PopFormTextField = {
+    let tf = PopFormTextField()
     addSubview(tf)
     tf.translatesAutoresizingMaskIntoConstraints = false
     tf.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -30,7 +30,7 @@ final class PopForm_TableViewCell: UITableViewCell {
 
   
   
-  func setView(for dataSource: PopForm_FieldDataSource) -> UITextField {
+  func setView(for dataSource: PopFormFieldDataSource) -> UITextField {
     textField.dataSource = dataSource
     return textField
   }

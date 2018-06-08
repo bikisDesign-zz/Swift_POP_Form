@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PopForm_FieldTheme {
+protocol PopFormFieldTheme {
   var backgroundColor: UIColor { get }
   var textColor: UIColor { get }
   var placeholderTextColor: UIColor { get }

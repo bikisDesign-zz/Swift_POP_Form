@@ -16,9 +16,9 @@ final class PopForm_ViewModel: NSObject {
   
   var delegate: PopForm_ViewModelDelegate?
   
-  var dataSource: PopForm_DataSource
+  var dataSource: PopFormDataSource
   
-  init(dataSource: PopForm_DataSource){
+  init(dataSource: PopFormDataSource){
     self.dataSource = dataSource
     super.init()
   }
@@ -26,9 +26,9 @@ final class PopForm_ViewModel: NSObject {
 
 extension PopForm_ViewModel:  UITableViewDataSource  {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    var cell: PopForm_TableViewCell!
-        cell = tableView.dequeueReusableCell(withIdentifier: PopForm_TableViewCell.ReuseID,
-                                             for: indexPath) as? PopForm_TableViewCell ?? PopForm_TableViewCell()
+    var cell: PopFormTableViewCell!
+        cell = tableView.dequeueReusableCell(withIdentifier: PopFormTableViewCell.ReuseID,
+                                             for: indexPath) as? PopFormTableViewCell ?? PopFormTableViewCell()
     
     let field = cell.setView(for: dataSource.fields[indexPath.row])
     

@@ -10,10 +10,10 @@ import UIKit
 
 /// The data source of all fields in a PopForm
 /// Create instances that conform to this protocol and use them to create an instance of *PopForm_Datasource* for PopForm_ViewController's ViewModel
-protocol PopForm_FieldDataSource {
+protocol PopFormFieldDataSource {
   
   /// The Field's Theme
-  var theme: PopForm_FieldTheme { get }
+  var theme: PopFormFieldTheme { get }
   
   /// The Placeholder's Text for the field
   var placeholder: String { get }
@@ -47,7 +47,7 @@ protocol PopForm_FieldDataSource {
 }
 
 
-extension PopForm_FieldDataSource {
+extension PopFormFieldDataSource {
   
   var keyboardType: UIKeyboardType { return .default }
   

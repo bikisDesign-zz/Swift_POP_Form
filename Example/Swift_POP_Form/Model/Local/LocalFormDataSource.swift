@@ -10,23 +10,23 @@ import UIKit
 import RP_iosBootstrap
 
 
-struct LocalFormDataSource: PopForm_DataSource {
-  var fields: PopForm_Fields = [FirstNameField(),
+struct LocalFormDataSource: PopFormDataSource {
+  var fields: PopFormFields = [FirstNameField(),
                                 LastNameField(),
                                 PasswordField()]
   
-  var theme: PopForm_Theme = FormTheme()
+  var theme: PopFormTheme = FormTheme()
 }
 
 
-private struct FormTheme: PopForm_Theme {
+private struct FormTheme: PopFormTheme {
   var backgroundColor: UIColor = UIColor(r: 64, g: 196, b: 255)
   var formColor: UIColor = UIColor(r: 130, g: 247, b: 255)
 }
 
 
 
-private struct TextFieldTheme: PopForm_FieldTheme {
+private struct TextFieldTheme: PopFormFieldTheme {
   var backgroundColor: UIColor = UIColor.white
   
   var textColor: UIColor = UIColor.black
@@ -42,8 +42,8 @@ private struct TextFieldTheme: PopForm_FieldTheme {
 
 
 
-private struct FirstNameField: PopForm_FieldDataSource {
-  var theme: PopForm_FieldTheme = TextFieldTheme()
+private struct FirstNameField: PopFormFieldDataSource {
+  var theme: PopFormFieldTheme = TextFieldTheme()
   var apiKey: String = "first_name"
   var placeholder: String = "First Name"
   var validationRule: [Rule]? = [AlphaRule()]
@@ -51,16 +51,16 @@ private struct FirstNameField: PopForm_FieldDataSource {
 }
 
 
-private struct LastNameField: PopForm_FieldDataSource {
-  var theme: PopForm_FieldTheme = TextFieldTheme()
+private struct LastNameField: PopFormFieldDataSource {
+  var theme: PopFormFieldTheme = TextFieldTheme()
   var apiKey: String = "last_name"
   var placeholder: String = "Last Name"
   var returnKey: UIReturnKeyType = UIReturnKeyType.next
 }
 
 
-private struct PasswordField: PopForm_FieldDataSource {
-  var theme: PopForm_FieldTheme = TextFieldTheme()
+private struct PasswordField: PopFormFieldDataSource {
+  var theme: PopFormFieldTheme = TextFieldTheme()
   var apiKey: String = "password"
   var placeholder: String = "Password"
   var validationRule: [Rule]? = [PasswordRule()]

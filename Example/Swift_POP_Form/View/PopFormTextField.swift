@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class PopForm_TextField: UITextField {
+final class PopFormTextField: UITextField {
   
-  var dataSource: PopForm_FieldDataSource? {
+  var dataSource: PopFormFieldDataSource? {
     didSet {
       backgroundColor = dataSource?.theme.backgroundColor
       placeholder = dataSource?.placeholder
