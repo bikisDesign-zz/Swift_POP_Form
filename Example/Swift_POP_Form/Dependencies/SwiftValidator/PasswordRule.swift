@@ -17,11 +17,11 @@ public class PasswordRule : RegexRule {
     // 8 characters. One uppercase. One Lowercase. One number.
     // static let regex = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).{8,}$"
     //
-    // no length. One uppercase. One lowercae. One number.
+    // no length. One uppercase. One lowercase. One number.
     // static let regex = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).*?$"
     
-    /// Regular express string to be used in validation.
-    static let regex = "^(?=.*?[A-Z]).{8,}$"
+    /// Regular express string to be used in validation. Eight Lowercase
+    static let regex = "^(?=.*?[a-z]).{8,}$"
     
     /**
      Initializes a `PasswordRule` object that will validate a field is a valid password.

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RP_iosBootstrap
 
 
 struct LocalFormDataSource: PopFormDataSource {
@@ -20,13 +19,23 @@ struct LocalFormDataSource: PopFormDataSource {
 
 
 private struct FormTheme: PopFormTheme {
-  var backgroundColor: UIColor = UIColor(r: 64, g: 196, b: 255)
-  var formColor: UIColor = UIColor(r: 130, g: 247, b: 255)
+  var backgroundColor: UIColor = .white
+  var formColor: UIColor = .white
 }
 
 
 
 private struct TextFieldTheme: PopFormFieldTheme {
+  var textfieldFont: UIFont = UIFont.systemFont(ofSize: 15)
+  
+  var borderOpacity: Float = 0.85
+  
+  var textAlignment: NSTextAlignment = .center
+  
+  var borderIsUnderline: Bool = false
+  
+  var errorColor: UIColor = .red
+  
   var backgroundColor: UIColor = UIColor.white
   
   var textColor: UIColor = UIColor.black
