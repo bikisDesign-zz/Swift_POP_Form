@@ -4,6 +4,8 @@ This is a basic form creation library currently in its infant stages. It's uses 
 
 It uses a slightly modified [SwiftValidator](https://github.com/SwiftValidatorCommunity/SwiftValidator) for it's Validation.
 
+Here's an article I wrote on the architecture used to create it! [Medium](https://medium.com/@aaron.bikis/coordinators-protocol-oriented-programming-and-mvvm-bullet-proof-architecture-with-swift-629dea5354ce)
+
 ### Some Disclaimers:
 This doesn't support Interface Builder, but does use Autolayout.
 
