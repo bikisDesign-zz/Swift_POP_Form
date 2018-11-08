@@ -27,9 +27,21 @@ private struct FormTheme: PopFormTheme {
 private struct TextFieldTheme: PopFormFieldTheme {
   var backgroundColor: UIColor = <#code#>
   
+  var textfieldFont: UIFont = <#code#>
+  
+  var borderOpacity: Float = <#code#>
+  
+  var textAlignment: NSTextAlignment = <#code#>
+  
+  var borderIsUnderline: Bool = <#code#>
+  
+  var errorColor: UIColor = <#code#>
+  
+  var backgroundColor: UIColor = <#code#>
+  
   var textColor: UIColor = <#code#>
   
-  var placeholderTextColor: UIColor = <#code#>
+  var placeholderTextColor: <#code#>
   
   var borderColor: UIColor = <#code#>
   

@@ -33,5 +33,29 @@ final class PopFormTableViewCell: UITableViewCell {
   func setView(for dataSource: PopFormFieldDataSource) -> UITextField {
     textField.dataSource = dataSource
     return textField
+    
+    // set placeholder text theme
+    if let placeholder = textField.placeholder {
+      textField.attributedPlaceholder = NSAttributedString(string: placeholder,
+                                                           attributes: [NSAttributedString.Key.foregroundColor:  dataSource.theme.placeholderTextColor])
+    }
+    
+    // add underline
+    if dataSource.theme.borderIsUnderline {
+      let line = CAShapeLayer()
+      let linePath = UIBezierPath()
+      linePath.move(to: CGPoint(x: 0, y: frame.height))
+      linePath.addLine(to: CGPoint(x: frame.width, y: frame.height))
+      line.path = linePath.cgPath
+      line.lineWidth = dataSource.theme.borderWidth
+      line.opacity = dataSource.theme.borderOpacity
+      line.strokeColor = dataSource.theme.borderColor.cgColor
+      layer.addSublayer(line)
+      
+    } else {
+      contentView.layer.borderColor = dataSource.theme.borderColor.cgColor
+      contentView.layer.borderWidth = dataSource.theme.borderWidth
+    }
+    
   }
 }
