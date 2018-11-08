@@ -13,4 +13,9 @@ import UIKit
 protocol PopFormTheme {
   var backgroundColor: UIColor { get }
   var formColor: UIColor { get }
+  var preventScrolling: Bool { get }
+}
+
+extension PopFormTheme {
+  var preventScrolling: Bool { return false }
 }

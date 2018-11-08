@@ -10,6 +10,10 @@ import UIKit
 
 protocol PopForm_ViewModelDelegate: class {
   func registerForValidation(validatable: UITextField, rules: [Rule])
+  
+  func registerDatePickerForAction(datePicker: UIDatePicker)
+  
+  func pickerViewValueDidChange(value: String)
 }
 
 final class PopForm_ViewModel: NSObject {
@@ -17,6 +21,8 @@ final class PopForm_ViewModel: NSObject {
   var delegate: PopForm_ViewModelDelegate?
   
   var dataSource: PopFormDataSource
+  
+  lazy var credentials = Credentials()
   
   init(dataSource: PopFormDataSource){
     self.dataSource = dataSource
@@ -32,13 +38,36 @@ extension PopForm_ViewModel:  UITableViewDataSource  {
     
     let field = cell.setView(for: dataSource.fields[indexPath.row])
     
-    if let rules = dataSource.fields[indexPath.row].validationRule {
+    if let startDate = dataSource.fields[indexPath.row].datePickerWithStartDate { // has a Date Picker as an InputView
+      let datePicker = UIDatePicker()
+      datePicker.setDate(startDate, animated: false)
+      datePicker.datePickerMode = .date
+      delegate?.registerDatePickerForAction(datePicker: datePicker)
+      cell.textField.inputView = datePicker
+    }
+    
+    if let pickerViewDataSource = dataSource.fields[indexPath.row].pickerViewWithDataSource { // has a custom picker view as an inputview
+      let pickerView = PopFormPickerView(data: pickerViewDataSource)
+      pickerView.formPickerDelegate = self
+      cell.textField.inputView = pickerView
+    }
+    
+    if let rules = dataSource.fields[indexPath.row].validationRule { // is not optional
       delegate?.registerForValidation(validatable: field, rules: rules)
     }
+    
+    cell.textField.text = credentials[dataSource.fields[indexPath.row].apiKey]
     return cell
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return dataSource.fields.count
+  }
+}
+
+
+extension PopForm_ViewModel: PopFormPickerViewDelegate {
+  func formPicker(didSelectValue value:String) {
+    delegate?.pickerViewValueDidChange(value: value)
   }
 }

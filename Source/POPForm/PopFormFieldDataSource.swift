@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias Credentials = [String: String]
+
 /// The data source of all fields in a PopForm
 /// Create instances that conform to this protocol and use them to create an instance of *PopForm_Datasource* for PopForm_ViewController's ViewModel
 protocol PopFormFieldDataSource {
@@ -26,7 +28,8 @@ protocol PopFormFieldDataSource {
   /// - Remark: default is *.default*
   var keyboardType: UIKeyboardType { get }
   
-  /// Any apiKeys that you'd like to be associated with the field to process once the field has been validated
+  /// an api key for the field MUST BE UNIQUE TO EACH FIELD ON A SINGLE FORM
+  /// otherwise the cell will deque and not store the field's entered text
   var apiKey: String { get }
   
   /// Set for autoCorrection
@@ -44,6 +47,18 @@ protocol PopFormFieldDataSource {
   /// The return key type for the field.
   /// - Remark: default is .default
   var returnKey: UIReturnKeyType { get }
+
+  /// If not nil will create an icon on the left side
+  var fieldIcon: UIImage? { get }
+  
+  /// The Capitilization of the textfield defaults to .none
+  var autoCapitilization: UITextAutocapitalizationType { get }
+  
+  var helperText: String? { get }
+  
+  var datePickerWithStartDate: Date? { get }
+  
+  var pickerViewWithDataSource: PopFormPickerViewDataSource? { get }
 }
 
 
@@ -60,4 +75,14 @@ extension PopFormFieldDataSource {
   var stockData: String { return "" }
   
   var returnKey: UIReturnKeyType { return UIReturnKeyType.default }
+
+  var fieldIcon: UIImage? { return nil }
+
+  var autoCapitilization: UITextAutocapitalizationType { return .none }
+  
+  var helperText: String? { return nil }
+  
+  var datePickerWithStartDate: Date? { return nil }
+  
+  var pickerViewWithDataSource: PopFormPickerViewDataSource? { return nil }
 }

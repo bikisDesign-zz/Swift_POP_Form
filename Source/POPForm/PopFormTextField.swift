@@ -10,12 +10,19 @@ import UIKit
 
 final class PopFormTextField: UITextField {
   
-  var dataSource: PopFormFieldDataSource? {
+  var dataSource: PopFormFieldDataSource! {
     didSet {
-      backgroundColor = dataSource?.theme.backgroundColor
-      placeholder = dataSource?.placeholder
-      text = dataSource?.stockData
-      returnKeyType = dataSource?.returnKey ?? UIReturnKeyType.default
+      backgroundColor = dataSource.theme.backgroundColor
+      placeholder = dataSource.placeholder
+      textColor = dataSource.theme.textColor
+      text = dataSource.stockData
+      font = dataSource.theme.textfieldFont
+      returnKeyType = dataSource.returnKey
+      textAlignment = dataSource.theme.textAlignment
+      autocapitalizationType = dataSource.autoCapitilization
+      autocorrectionType = dataSource.hasAutoCorrection
+      isSecureTextEntry = dataSource.isSecureEntry
+      keyboardType = dataSource.keyboardType
     }
   }
 }
