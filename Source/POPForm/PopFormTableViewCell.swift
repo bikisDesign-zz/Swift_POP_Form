@@ -16,6 +16,18 @@ final class PopFormTableViewCell: UITableViewCell {
     return PopFormTableViewCell.ReuseID
   }
   
+  private var fieldDataSource: PopFormFieldDataSource!
+  
+  var isErrored: Bool = false {
+    didSet {
+      // show validation errors
+      if isErrored {
+        contentView.layer.borderColor = fieldDataSource.theme.errorColor.cgColor
+        return
+      }
+      contentView.layer.borderColor = fieldDataSource.theme.borderColor.cgColor
+      return }
+  }
   
   lazy var textField: PopFormTextField = {
     let tf = PopFormTextField()
@@ -27,12 +39,13 @@ final class PopFormTableViewCell: UITableViewCell {
     tf.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
     return tf
   }()
-
+  
   
   
   func setView(for dataSource: PopFormFieldDataSource) -> UITextField {
+    self.fieldDataSource = dataSource
     textField.dataSource = dataSource
-    return textField
+    backgroundColor = UIColor.clear
     
     // set placeholder text theme
     if let placeholder = textField.placeholder {
@@ -57,5 +70,12 @@ final class PopFormTableViewCell: UITableViewCell {
       contentView.layer.borderWidth = dataSource.theme.borderWidth
     }
     
+    NSLayoutConstraint.activate([
+      textField.topAnchor.constraint(equalTo: topAnchor),
+      textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+      textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      textField.bottomAnchor.constraint(equalTo: bottomAnchor)
+      ])
+    return textField
   }
 }
