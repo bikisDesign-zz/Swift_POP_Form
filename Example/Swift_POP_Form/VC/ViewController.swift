@@ -28,13 +28,33 @@ class ViewController: UIViewController {
     form.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     form.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     
-    let totalFormHeight = formDataSource.fields.reduce(CGFloat(0), { $0 + $1.theme.height })
+    let totalFormHeight = formDataSource.fields.reduce(CGFloat(0), { $0 + $1.theme.textFieldHeight })
     form.view.heightAnchor.constraint(equalToConstant: totalFormHeight).isActive = true
   }
 }
 
 extension ViewController: PopFormViewControllerDelegate {
-  func formWasValidated(callback: PopFormViewControllerCallback) {
-    print(callback)
+  func formWasValid(callback: Credentials) {
+
+  }
+
+  func formWasInvalid() {
+
+  }
+
+  func formChangedEditingStatus(keyboardOriginDelta: CGFloat, animationOptions: UIView.AnimationOptions, duration: Double) {
+
+  }
+
+  func formTextFieldShouldChangeCharectersInRange(text: String, range: NSRange, replacment: String, field: PopFormTextField) -> Bool {
+    return true
+  }
+
+  func textFieldShouldReturn(_ textField: PopFormTextField) -> Bool {
+    return true
+  }
+
+  func textFieldShouldBeginEditing(_ field: PopFormTextField) -> Bool {
+    return true
   }
 }

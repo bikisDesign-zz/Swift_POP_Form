@@ -1,0 +1,370 @@
+//
+//  PopFormViewController.swift
+//  Swift_POP_Form
+//
+//  Created by Aaron bikis on 5/14/18.
+//  Copyright © 2018 Aaron bikis. All rights reserved.
+//
+
+import UIKit
+
+
+protocol PopFormViewControllerDelegate: class {
+  func formWasInvalid()
+  func formWasValid(callback: Credentials)
+  func formChangedEditingStatus(keyboardOriginDelta: CGFloat, animationOptions: UIView.AnimationOptions, duration: Double)
+  func formTextFieldShouldChangeCharectersInRange(text: String, range: NSRange, replacment: String, field: PopFormTextField) -> Bool
+  func textFieldShouldBeginEditing(_ field: PopFormTextField) -> Bool
+  func textFieldShouldReturn(_ textField: PopFormTextField) -> Bool
+}
+
+/// Can be either embeded in another VC or presented on its own.
+/// By setting up the whole datasource elsewhere you can pass in an instance of *PopForm_DataSource* to create an instance of this viewcontroller
+final class PopFormViewController: UIViewController {
+
+  weak var delegate: PopFormViewControllerDelegate?
+
+  var shouldValidateOnLastFieldReturnKeyTap = true
+
+  var isScrollEnabled = true {
+    didSet {
+      tableView.isScrollEnabled = isScrollEnabled
+    }
+  }
+
+  private var viewModel: PopForm_ViewModel
+
+  private lazy var tableView: UITableView = {
+    let tv = UITableView()
+    tv.delegate = self
+    tv.dataSource = viewModel
+    tv.backgroundColor = viewModel.dataSource.theme.backgroundColor
+    tv.translatesAutoresizingMaskIntoConstraints = false
+    tv.separatorStyle = .none
+    tv.register(PopFormTableViewCell.self, forCellReuseIdentifier: PopFormTableViewCell.ReuseID)
+    return tv
+  }()
+
+  private var validator = Validator()
+
+  private lazy var currentIndexPath: IndexPath = IndexPath(row: 0, section: 0)
+
+  init(dataSource: PopFormDataSource, credentials: Credentials? = nil){
+    viewModel = PopForm_ViewModel(dataSource: dataSource)
+    super.init(nibName: nil, bundle: nil)
+    viewModel.textFieldDelegate = self
+    viewModel.textViewDelegate = self
+    viewModel.delegate = self
+    if let credentials = credentials {
+      viewModel.credentials = credentials
+    }
+  }
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder: not supported")
+  }
+
+  func update(ds: PopFormDataSource){
+    viewModel.dataSource = ds
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+    }
+  }
+
+  func update(credentials: Credentials){
+    viewModel.credentials.data.merge(credentials.data, uniquingKeysWith: { (_, new) -> Any in
+      return new
+    })
+  }
+  func getCredentials() -> Credentials {
+    return viewModel.credentials
+  }
+
+  func reloadData(){
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+    }
+  }
+
+  func isCredentialsEmpty() -> Bool {
+    return viewModel.credentials.data.isEmpty
+  }
+
+  override func loadView() {
+    view = UIView()
+    view.backgroundColor = UIColor.clear
+    view.translatesAutoresizingMaskIntoConstraints = false
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    addSubviews()
+    configureViewLayout()
+  }
+
+
+  private func addSubviews(){
+    view.addSubview(tableView)
+  }
+
+  private func configureViewLayout(){
+    tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+    tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+  }
+
+  @objc private func keyboardWillShowOrHide(_ notification: NSNotification) {
+    let userInfo = notification.userInfo!
+    let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+    let rawAnimationCurveValue = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue
+
+    let animationCurve = UIView.AnimationOptions(rawValue: rawAnimationCurveValue)
+    // Convert the keyboard frame from screen to view coordinates.
+    let keyboardScreenBeginFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+    let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+
+    let keyboardViewBeginFrame = view.convert(keyboardScreenBeginFrame, from: view.window)
+    let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+    // Determine how far the keyboard has moved up or down.
+    let originDelta = keyboardViewEndFrame.origin.y - keyboardViewBeginFrame.origin.y
+    let animationOptions: UIView.AnimationOptions = [animationCurve, .beginFromCurrentState]
+
+    delegate?.formChangedEditingStatus(keyboardOriginDelta: originDelta, animationOptions: animationOptions, duration: animationDuration)
+  }
+  
+  func validateForm(){
+    validator.validate(self)
+  }
+
+  func formHeight() -> CGFloat {
+    return CGFloat(viewModel.dataSource.fields.reduce(CGFloat(0), {
+      if $1.isTextView {
+        return $0 + $1.theme.textViewHeight
+      }
+      return $0 + $1.theme.textFieldHeight }))
+  }
+
+  private func getIndexPath(for field: ValidatableField) -> IndexPath {
+    let childField = field as? UIView
+    guard let cell = childField?.superview as? PopFormTableViewCell else {
+      fatalError() }
+
+    guard let currentIndex = tableView.indexPath(for: cell) else {
+      fatalError("cell does not exist") }
+
+    return currentIndex
+  }
+
+  private func refreshErrorUI(){
+    for index in 0..<viewModel.dataSource.fields.count { // refresh the view
+      let cell = (tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? PopFormTableViewCell)
+      cell?.erroredText = nil
+      cell?.animateStateChange()
+    }
+  }
+
+  private func setCredentials(credential: Any){
+    viewModel.credentials.data[viewModel.dataSource.fields[currentIndexPath.row].apiKey] = credential
+  }
+
+  @objc private func valueChangedFor(_ datePicker: UIDatePicker) {
+    let cell = tableView.cellForRow(at: currentIndexPath) as! PopFormTableViewCell
+    
+    cell.textField.text = cell.fieldDataSource.datePickerWithDataSource?.formatForDisplayedDate(datePicker.date)
+    setCredentials(credential: datePicker.date)
+  }
+
+  private func check(lhsKey: String, rhsKey: String, isComparisonResult: ComparisonResult, or secondComparisonResult: ComparisonResult? = nil) -> Bool {
+    guard let lhsIndex = viewModel.dataSource.fields.firstIndex(where: { $0.apiKey == lhsKey }) else { return false }
+    guard let rhsIndex = viewModel.dataSource.fields.firstIndex(where: { $0.apiKey == rhsKey }) else { return false }
+    guard let lhsDate = viewModel.credentials.data[lhsKey] as? Date else { return false }
+    guard let rhsDate = viewModel.credentials.data[rhsKey] as? Date else { return false }
+    if lhsDate.compare(rhsDate) != isComparisonResult { // if it isn't orderded asc
+      if let secondComapare = secondComparisonResult  { // and if there is a second to compare
+        if lhsDate.compare(rhsDate) == secondComapare { // if it matches the second
+          return true
+        }
+      }
+      let lhsCell = tableView.cellForRow(at: IndexPath(row: lhsIndex, section: 0)) as! PopFormTableViewCell
+      let rhsCell = tableView.cellForRow(at: IndexPath(row: rhsIndex, section: 0)) as! PopFormTableViewCell
+      lhsCell.erroredText = "start date is greater than end date"
+      lhsCell.animateStateChange()
+      rhsCell.erroredText = "end date is less than start date"
+      rhsCell.animateStateChange()
+      return false
+    }
+    return true
+  }
+
+  func setSelectionFor(field: ValidatableField){
+    currentIndexPath = getIndexPath(for: field)
+    let cell = tableView.cellForRow(at: currentIndexPath) as! PopFormTableViewCell
+    cell.isCurrentlyFocused = true
+    cell.erroredText = nil
+    cell.animateStateChange()
+    if let datepicker = cell.textField.inputView as? UIDatePicker {
+      cell.textField.text = cell.fieldDataSource.datePickerWithDataSource?.formatForDisplayedDate(datepicker.date)
+      setCredentials(credential: datepicker.date)
+    }
+  }
+
+  func setDeselectionFor(field: ValidatableField){
+    let indexPathForUnselectedCell = getIndexPath(for: field)
+    let cell = tableView.cellForRow(at: indexPathForUnselectedCell) as! PopFormTableViewCell
+    cell.isCurrentlyFocused = false
+    cell.animateStateChange()
+  }
+}
+
+
+
+//MARK: TableViewDelegate
+extension PopFormViewController: UITableViewDelegate {
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    let fieldDataSource = viewModel.dataSource.fields[indexPath.row]
+    if fieldDataSource.isTextView {
+      return fieldDataSource.theme.textViewHeight
+    }
+    return fieldDataSource.theme.textFieldHeight
+  }
+}
+
+extension PopFormViewController: PopForm_ViewModelDelegate {
+  func registerForValidation(validatable: ValidatableField, rules: [Rule]) {
+    validator.registerField(validatable, rules: rules)
+  }
+
+  func registerDatePickerForAction(datePicker: UIDatePicker) {
+    datePicker.addTarget(self, action: #selector(valueChangedFor(_:)), for: .valueChanged)
+  }
+
+  func pickerViewValueDidChange(value: String) {
+    let cell = tableView.cellForRow(at: currentIndexPath) as! PopFormTableViewCell
+    cell.textField.text = value
+    setCredentials(credential: value)
+  }
+}
+
+
+//MARK: TextView Delegate
+extension PopFormViewController: UITextViewDelegate {
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    setSelectionFor(field: textView)
+    let fieldDataSource = viewModel.dataSource.fields[currentIndexPath.row]
+    if textView.textColor == fieldDataSource.theme.placeholderTextColor {
+      textView.text = nil
+      textView.textColor = fieldDataSource.theme.textColor
+    }
+  }
+
+  func textViewDidEndEditing(_ textView: UITextView) {
+    setDeselectionFor(field: textView)
+    if textView.text.isEmpty {
+      let index = getIndexPath(for: textView)
+      textView.text = viewModel.dataSource.fields[index.row].placeholder
+      let fieldDatasource = viewModel.dataSource.fields[currentIndexPath.row]
+      textView.textColor = fieldDatasource.theme.placeholderTextColor
+    }
+  }
+
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    let previous = textView.text ?? ""
+    let fullText = (previous as NSString).replacingCharacters(in: range, with: text)
+    setCredentials(credential: fullText)
+    return true
+  }
+}
+
+
+//MARK: TextField Delegate
+extension PopFormViewController: UITextFieldDelegate {
+
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    guard let popField = textField as? PopFormTextField else { return false }
+    guard delegate?.textFieldShouldReturn(popField) == true else { return false }
+    let activeIndex = getIndexPath(for: textField)
+    let nextIndex = IndexPath(row: activeIndex.row + 1, section: activeIndex.section)
+    let isLastField = viewModel.dataSource.fields.count == nextIndex.row
+
+    if isLastField {
+      textField.resignFirstResponder()
+      if shouldValidateOnLastFieldReturnKeyTap {
+        validator.validate(self)
+      }
+      return true
+    }
+
+    guard let nextCell = tableView.cellForRow(at: nextIndex) as? PopFormTableViewCell else { fatalError() }
+
+    nextCell.textField.becomeFirstResponder()
+    return true
+  }
+
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    let text = textField.text ?? ""
+    let fullText = (text as NSString).replacingCharacters(in: range, with: string)
+    setCredentials(credential: fullText)
+    return delegate?.formTextFieldShouldChangeCharectersInRange(text: text,
+                                                                range: range,
+                                                                replacment: string,
+                                                                field: textField as! PopFormTextField) ?? true
+  }
+
+  func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    if let shouldBegin = delegate?.textFieldShouldBeginEditing(textField as! PopFormTextField) {
+      return shouldBegin
+    }
+    return true
+  }
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    setSelectionFor(field: textField)
+    if textField.isSecureTextEntry {
+      textField.text = ""
+    }
+  }
+
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    setDeselectionFor(field: textField)
+  }
+}
+
+//MARK: Validation Delegate
+extension PopFormViewController: ValidationDelegate {
+  func validationSuccessful() {
+    refreshErrorUI()
+    delegate?.formWasValid(callback: viewModel.credentials)
+  }
+
+  func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+    refreshErrorUI()
+    errors.forEach { (arg) in // show errors
+      let (field, _) = arg
+      self.invalidate(field: field, erroredText: arg.1.errorMessage)
+    }
+    delegate?.formWasInvalid()
+  }
+
+  private func invalidate(field: Validatable, erroredText: String){
+    if let field = field as? PopFormTextField {
+      let cell = field.superview as! PopFormTableViewCell
+      cell.erroredText = erroredText
+      cell.animateStateChange()
+    }
+
+  }
+
+  func updateAndValidateField(matching apiKey: String, with text: String){
+    guard let index = viewModel.dataSource.fields.firstIndex(where: { $0.apiKey == apiKey }) else { return }
+    guard let cell = tableView.cellForRow(at: IndexPath(row: Int(index), section: 0)) as? PopFormTableViewCell else { return }
+    cell.textField.text = text
+    validator.validateField(cell.textField) { (error) in
+      if let error = error {
+        invalidate(field: cell.textField, erroredText: error.errorMessage)
+      } else {
+        cell.erroredText = nil
+        cell.animateStateChange()
+      }
+    }
+  }
+}

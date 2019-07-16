@@ -10,9 +10,9 @@ import UIKit
 
 
 struct LocalFormDataSource: PopFormDataSource {
-  var fields: PopFormFields = [FirstNameField(),
-                                LastNameField(),
-                                PasswordField()]
+  var fields: PopFormFields = [FirstName_Field(),
+                               LastName_Field(),
+                               Password_Field()]
   
   var theme: PopFormTheme = FormTheme()
 }
@@ -26,6 +26,9 @@ private struct FormTheme: PopFormTheme {
 
 
 private struct TextFieldTheme: PopFormFieldTheme {
+
+  var focusedColor: UIColor = UIColor.lightGray
+
   var textfieldFont: UIFont = UIFont.systemFont(ofSize: 15)
   
   var borderOpacity: Float = 0.85
@@ -47,33 +50,81 @@ private struct TextFieldTheme: PopFormFieldTheme {
   var borderWidth: CGFloat = 0.5
   
   var height: CGFloat = 65
+
+  var textFieldHeight: CGFloat = 60
+
+  var textViewHeight: CGFloat = 120
+
+  var cursorColor: UIColor = UIColor.blue
 }
 
 
+private struct BirthdayDatePickerDataSource: PopFormDatePickerDataSource {
+  var startDate: Date? = nil
 
-private struct FirstNameField: PopFormFieldDataSource {
+  var restrictedDateRange: (Date, Date)? = nil
+
+  var shouldPrefillStartDate: Bool = false
+
+  var formatForDisplayedDate: (Date) -> String = {
+    let df = DateFormatter()
+    df.dateFormat = "MM"
+    let month = df.string(from: $0)
+    df.dateFormat = "dd"
+    let day = df.string(from: $0)
+    df.dateFormat = "yy"
+    let year = df.string(from: $0)
+    return "\(day).\(month)\(year)"
+  }
+}
+
+
+private struct FirstName_Field: PopFormFieldDataSource {
+  var prefilledText: String?
+
   var theme: PopFormFieldTheme = TextFieldTheme()
-  var apiKey: String = "first_name"
+
   var placeholder: String = "First Name"
-  var validationRule: [Rule]? = [AlphaRule()]
-  var returnKey: UIReturnKeyType = UIReturnKeyType.next
+
+  var apiKey: String = "firstName"
+
+  var validationRule: [Rule]?
+
+  var returnKey: UIReturnKeyType?
+
+  var autoCapitilization: UITextAutocapitalizationType = .words
 }
 
 
-private struct LastNameField: PopFormFieldDataSource {
+private struct LastName_Field: PopFormFieldDataSource {
+  var prefilledText: String?
+
   var theme: PopFormFieldTheme = TextFieldTheme()
-  var apiKey: String = "last_name"
+
   var placeholder: String = "Last Name"
-  var returnKey: UIReturnKeyType = UIReturnKeyType.next
+
+  var apiKey: String = "lastName"
+
+  var validationRule: [Rule]?
+
+  var returnKey: UIReturnKeyType?
+
+  var autoCapitilization: UITextAutocapitalizationType = .words
 }
 
 
-private struct PasswordField: PopFormFieldDataSource {
+private struct Password_Field: PopFormFieldDataSource {
+  var prefilledText: String?
+
   var theme: PopFormFieldTheme = TextFieldTheme()
-  var apiKey: String = "password"
-  var placeholder: String = "Password"
-  var validationRule: [Rule]? = [PasswordRule()]
-  var isSecureEntry: Bool = true
-  var returnKey: UIReturnKeyType = UIReturnKeyType.done
-}
 
+  var placeholder: String = "Password"
+
+  var apiKey: String = "password"
+
+  var validationRule: [Rule]?
+
+  var returnKey: UIReturnKeyType?
+
+  var autoCapitilization: UITextAutocapitalizationType = .words
+}
