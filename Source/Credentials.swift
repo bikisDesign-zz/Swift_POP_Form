@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Credentials {
+public struct Credentials {
   var data: [String: Any] = [:]
 }

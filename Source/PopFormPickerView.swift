@@ -8,13 +8,11 @@
 
 import UIKit
 
-
-import UIKit
 protocol PopFormPickerViewDelegate: class {
   func formPicker(didSelectValue value:String)
 }
 
-class PopFormPickerView: UIPickerView {
+public class PopFormPickerView: UIPickerView {
   
   private var data: PopFormPickerViewDataSource
   weak var formPickerDelegate: PopFormPickerViewDelegate?
@@ -50,30 +48,30 @@ class PopFormPickerView: UIPickerView {
 
 
 extension PopFormPickerView: UIPickerViewDataSource {
-  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+  public func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
   }
   
   
-  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+  public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     return data.content[row]
   }
   
-  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+  public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     return data.content.count
   }
 }
 
 
 extension PopFormPickerView: UIPickerViewDelegate {
-  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+  public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     formPickerDelegate?.formPicker(didSelectValue: data.content[row])
   }
 }
 
 
 extension PopFormPickerView: UIGestureRecognizerDelegate {
-  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+  public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
     return true
   }
 }

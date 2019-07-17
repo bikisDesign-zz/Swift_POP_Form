@@ -32,6 +32,7 @@ class FormDataSourceTest: XCTestCase {
     // given
     guard let birthDayField = sut.fields.first(where: { $0.apiKey == "birthday" })
       else { XCTFail("birthday field is not contained in the fields array or the api key has changed"); return }
+    
     guard birthDayField.datePickerWithDataSource != nil
       else { XCTFail("birthday field does not have a date picker data source"); return }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PopFormTextField: UITextField {
+public class PopFormTextField: UITextField {
   
 
   var dataSource: PopFormFieldDataSource! {

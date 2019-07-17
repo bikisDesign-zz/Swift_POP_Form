@@ -1,0 +1,35 @@
+efault_platform(:ios)
+
+platform :ios do
+
+
+############################## PRE ##############################
+
+before_all do
+
+  #ensure_git_status_clean
+
+end
+
+
+
+
+
+
+############################# POST ##############################
+# This lane is called, only if the executed lane was successful
+after_all do |lane|
+      
+  build = Actions.lane_context[SharedValues::BUILD_NUMBER]
+  notification(
+    message: "Fastlane finished '#{lane}' successfully"
+  ) 
+  end 
+
+error do |lane, exception|
+  notification(
+    message:"Fastlane '#{lane}' failed with exception: '#{exception}'"
+  )
+  end
+end
+

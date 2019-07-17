@@ -17,7 +17,7 @@ protocol PopForm_ViewModelDelegate: class {
   func pickerViewValueDidChange(value: String)
 }
 
-final class PopForm_ViewModel: NSObject {
+public class PopForm_ViewModel: NSObject {
 
   var delegate: PopForm_ViewModelDelegate?
 
@@ -36,7 +36,7 @@ final class PopForm_ViewModel: NSObject {
 }
 
 extension PopForm_ViewModel:  UITableViewDataSource  {
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     var cell: PopFormTableViewCell!
     cell = tableView.dequeueReusableCell(withIdentifier: PopFormTableViewCell.ReuseID,
                                          for: indexPath) as? PopFormTableViewCell ?? PopFormTableViewCell()
@@ -88,7 +88,7 @@ extension PopForm_ViewModel:  UITableViewDataSource  {
     return cell
   }
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return dataSource.fields.count
   }
 }

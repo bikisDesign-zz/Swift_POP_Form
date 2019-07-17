@@ -9,6 +9,7 @@
 import UIKit
 import SwiftValidator
 
+
 struct LocalFormDataSource: PopFormDataSource {
   var fields: PopFormFields = [FirstName_Field(),
                                LastName_Field(),
@@ -16,8 +17,7 @@ struct LocalFormDataSource: PopFormDataSource {
                                PhoneNumber_Field(),
                                Occupation_Field(),
                                Notes_Field(),
-                               Birthday_Field(),
-                               Password_Field()]
+                               Birthday_Field()]
   
   var theme: PopFormTheme = FormTheme()
 }
@@ -95,7 +95,7 @@ private struct FirstName_Field: PopFormFieldDataSource {
 
   var apiKey: String = "firstName"
 
-  var validationRule: [Rule]? = [RequiredRule()]
+  var validationRule: [Rule]? = [RequiredRule(message: "First Name is Required")]
 
   var returnKey: UIReturnKeyType? = .next
 
@@ -176,26 +176,6 @@ private struct Zip_Field: PopFormFieldDataSource {
   var autoCapitilization: UITextAutocapitalizationType = .none
 }
 
-
-private struct Password_Field: PopFormFieldDataSource {
-  var prefilledText: String?
-
-  var theme: PopFormFieldTheme = TextFieldTheme()
-
-  var placeholder: String = "Password"
-
-  var apiKey: String = "password"
-
-  var validationRule: [Rule]? = [PasswordRule(regex: "^.{8,}$", message: "Must be 8 characeters long")]
-
-  var returnKey: UIReturnKeyType? = .go
-
-  var autoCapitilization: UITextAutocapitalizationType = .words
-
-  var isSecureEntry: Bool = true
-}
-
-
 private struct Birthday_Field: PopFormFieldDataSource {
   var prefilledText: String?
 
@@ -205,7 +185,7 @@ private struct Birthday_Field: PopFormFieldDataSource {
 
   var apiKey: String = "birthday"
 
-  var validationRule: [Rule]? = [MinDateRule(dateFormat: "dd.MM.yy")]
+  var validationRule: [Rule]? = [MinDateRule(years: 18, message: "Must be 18 or older", dateFormat:  "dd.MM.yy")]
 
   var returnKey: UIReturnKeyType?
 

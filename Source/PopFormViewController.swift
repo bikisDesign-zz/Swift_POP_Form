@@ -21,7 +21,7 @@ protocol PopFormViewControllerDelegate: class {
 
 /// Can be either embeded in another VC or presented on its own.
 /// By setting up the whole datasource elsewhere you can pass in an instance of *PopForm_DataSource* to create an instance of this viewcontroller
-final class PopFormViewController: UIViewController {
+public class PopFormViewController: UIViewController {
 
   weak var delegate: PopFormViewControllerDelegate?
 
@@ -93,7 +93,7 @@ final class PopFormViewController: UIViewController {
   }
 
 
-  override func loadView() {
+  override public func loadView() {
     view = UIView()
     view.backgroundColor = UIColor.clear
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +104,7 @@ final class PopFormViewController: UIViewController {
   }
 
 
-  override func viewWillAppear(_ animated: Bool) {
+  override public func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: animated)
   }
@@ -231,7 +231,7 @@ final class PopFormViewController: UIViewController {
 //MARK: TableViewDelegate
 extension PopFormViewController: UITableViewDelegate {
 
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     let fieldDataSource = viewModel.dataSource.fields[indexPath.row]
     if fieldDataSource.isTextView {
       return fieldDataSource.theme.textViewHeight
@@ -259,7 +259,7 @@ extension PopFormViewController: PopForm_ViewModelDelegate {
 
 //MARK: TextView Delegate
 extension PopFormViewController: UITextViewDelegate {
-  func textViewDidBeginEditing(_ textView: UITextView) {
+  public func textViewDidBeginEditing(_ textView: UITextView) {
     setSelectionFor(field: textView)
     let fieldDataSource = viewModel.dataSource.fields[currentIndexPath.row]
     if textView.textColor == fieldDataSource.theme.placeholderTextColor {
@@ -268,7 +268,7 @@ extension PopFormViewController: UITextViewDelegate {
     }
   }
 
-  func textViewDidEndEditing(_ textView: UITextView) {
+  public func textViewDidEndEditing(_ textView: UITextView) {
     setDeselectionFor(field: textView)
     if textView.text.isEmpty {
       guard let index = getIndexPath(for: textView) else { return }
@@ -278,7 +278,7 @@ extension PopFormViewController: UITextViewDelegate {
     }
   }
 
-  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+  public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     let previous = textView.text ?? ""
     let fullText = (previous as NSString).replacingCharacters(in: range, with: text)
     setCredentials(credential: fullText)
@@ -290,7 +290,7 @@ extension PopFormViewController: UITextViewDelegate {
 //MARK: TextField Delegate
 extension PopFormViewController: UITextFieldDelegate {
 
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+  public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     guard let popField = textField as? PopFormTextField else { return false }
     guard delegate?.textFieldShouldReturn(popField) == true else { return false }
     guard let activeIndex = getIndexPath(for: textField) else { return false }
@@ -311,7 +311,7 @@ extension PopFormViewController: UITextFieldDelegate {
     return true
   }
 
-  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+  public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     let text = textField.text ?? ""
     let fullText = (text as NSString).replacingCharacters(in: range, with: string)
     setCredentials(credential: fullText)
@@ -321,33 +321,33 @@ extension PopFormViewController: UITextFieldDelegate {
                                                                 field: textField as! PopFormTextField) ?? true
   }
 
-  func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+  public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
     if let shouldBegin = delegate?.textFieldShouldBeginEditing(textField as! PopFormTextField) {
       return shouldBegin
     }
     return true
   }
 
-  func textFieldDidBeginEditing(_ textField: UITextField) {
+  public func textFieldDidBeginEditing(_ textField: UITextField) {
     setSelectionFor(field: textField)
     if textField.isSecureTextEntry {
       textField.text = ""
     }
   }
 
-  func textFieldDidEndEditing(_ textField: UITextField) {
+  public func textFieldDidEndEditing(_ textField: UITextField) {
     setDeselectionFor(field: textField)
   }
 }
 
 //MARK: Validation Delegate
 extension PopFormViewController: ValidationDelegate {
-  func validationSuccessful() {
+  public func validationSuccessful() {
     refreshErrorUI()
     delegate?.formWasValid(callback: viewModel.credentials)
   }
 
-  func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+  public func validationFailed(_ errors: [(Validatable, ValidationError)]) {
     refreshErrorUI()
     errors.forEach { (arg) in // show errors
       let (field, _) = arg

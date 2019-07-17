@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PopFormTextView: UITextView {
+public class PopFormTextView: UITextView {
 
   var dataSource: PopFormFieldDataSource! {
     didSet {

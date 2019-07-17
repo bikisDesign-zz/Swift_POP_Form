@@ -24,9 +24,10 @@
 		51BE7A5B22DE928500C58CD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B7DB20AA4CA500528950 /* AppDelegate.swift */; };
 		51BE7A5C22DE928700C58CD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B87620AA5F8F00528950 /* ViewController.swift */; };
 		51BE7A5D22DE928A00C58CD1 /* LocalFormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5B86420AA530500528950 /* LocalFormDataSource.swift */; };
-		51BE7A6622DEBC1800C58CD1 /* Swift_POP_FormUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BE7A6522DEBC1800C58CD1 /* Swift_POP_FormUITests.swift */; };
 		51BE7A7822DEBFF600C58CD1 /* FormDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BE7A7722DEBFF600C58CD1 /* FormDataSourceTest.swift */; };
 		51BE7ABA22DED11E00C58CD1 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BE7AB922DED11E00C58CD1 /* SwiftValidator.framework */; };
+		51BE7ABD22DED6E600C58CD1 /* XCUIElement-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BE7ABC22DED6E600C58CD1 /* XCUIElement-Ext.swift */; };
+		51BE7AC222DEE01500C58CD1 /* Swift_POP_FormUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BE7A6522DEBC1800C58CD1 /* Swift_POP_FormUITests.swift */; };
 		89C5B7E320AA4CA900528950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89C5B7E220AA4CA900528950 /* Assets.xcassets */; };
 		89C5B7E620AA4CA900528950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C5B7E420AA4CA900528950 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		51BE7A7722DEBFF600C58CD1 /* FormDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDataSourceTest.swift; sourceTree = "<group>"; };
 		51BE7A7922DEBFF600C58CD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51BE7AB922DED11E00C58CD1 /* SwiftValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftValidator.framework; path = Carthage/Build/iOS/SwiftValidator.framework; sourceTree = "<group>"; };
+		51BE7ABC22DED6E600C58CD1 /* XCUIElement-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement-Ext.swift"; sourceTree = "<group>"; };
 		89C5B7D820AA4CA500528950 /* Swift_POP_Form.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_POP_Form.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C5B7DB20AA4CA500528950 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89C5B7E220AA4CA900528950 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				51BE7A6522DEBC1800C58CD1 /* Swift_POP_FormUITests.swift */,
+				51BE7ABC22DED6E600C58CD1 /* XCUIElement-Ext.swift */,
 				51BE7A6722DEBC1800C58CD1 /* Info.plist */,
 			);
 			path = Swift_POP_FormUITests;
@@ -375,7 +378,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51BE7A6622DEBC1800C58CD1 /* Swift_POP_FormUITests.swift in Sources */,
+				51BE7ABD22DED6E600C58CD1 /* XCUIElement-Ext.swift in Sources */,
+				51BE7AC222DEE01500C58CD1 /* Swift_POP_FormUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +447,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4P8U7398K;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Swift_POP_FormUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -465,6 +473,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4P8U7398K;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Swift_POP_FormUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (

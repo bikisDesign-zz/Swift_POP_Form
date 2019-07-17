@@ -9,7 +9,7 @@
 import UIKit
 import SwiftValidator
 
-final class PopFormTableViewCell: UITableViewCell {
+public class PopFormTableViewCell: UITableViewCell {
 
   private enum BorderAnimState {
     case focused, errored, normal
@@ -17,11 +17,11 @@ final class PopFormTableViewCell: UITableViewCell {
 
   static var ReuseID: String = "FormTextFieldCell"
 
-  override var reuseIdentifier: String? {
+  override public var reuseIdentifier: String? {
     return PopFormTableViewCell.ReuseID
   }
 
-  override func prepareForReuse() {
+  override public func prepareForReuse() {
     super.prepareForReuse()
     textField.inputView = nil
     textView.inputView = nil
