@@ -1,0 +1,6 @@
+scheme("Swift_POP_Form")
+devices(["iPhone 6", "iPhone X", "iPhone XR"])
+
+clean(true)
+
+output_types("html")

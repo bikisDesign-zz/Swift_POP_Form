@@ -12,6 +12,10 @@ before_all do
 end
 
 
+lane :test do
+  scan()
+end
+
 
 
 
