@@ -1,96 +1,115 @@
-# POP! A Swift Form
+**POP! A form builder written in Swift**
 
-This is a basic form creation library currently in its infant stages. It's uses on MVVM and POP to quickly create forms. 
+[![Build Status](https://travis-ci.com/bikisDesign/Swift_POP_Form.svg?branch=master)](https://travis-ci.com/bikisDesign/Swift_POP_Form)[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-It uses a slightly modified [SwiftValidator](https://github.com/SwiftValidatorCommunity/SwiftValidator) for it's Validation.
+This is a basic form creation system that uses MVVM and POP to quickly create and customize iOS forms.
+
+It uses [SwiftValidator](https://github.com/SwiftValidatorCommunity/SwiftValidator) and for it's validation.
 
 Here's an article I wrote on the architecture used to create it! [Medium](https://medium.com/@aaron.bikis/coordinators-protocol-oriented-programming-and-mvvm-bullet-proof-architecture-with-swift-629dea5354ce)
 
-### Some Disclaimers:
-This doesn't support Interface Builder, but does use Autolayout.
+**How do I use it?**
 
-## To Use This Library
-#### To create a POPForm you need field styling:
+Let's start by creating a field's datasource:
 
-```
-private struct TextFieldTheme: PopForm_FieldTheme {
-  var backgroundColor: UIColor = UIColor.white
+`private struct FirstName_Field: PopFormFieldDataSource {`
 
-  var textColor: UIColor = UIColor.black
+  `var prefilledText: String?`
 
-  var placeholderTextColor: UIColor = UIColor.lightText
+  `var theme: PopFormFieldTheme = TextFieldTheme()`
 
-  var borderColor: UIColor = UIColor.lightGray
+  `var placeholder: String = "First Name"`
 
-  var borderWidth: CGFloat = 0.5
+  `var apiKey: String = "firstName"`
 
-  var height: CGFloat = 65
-}
-```
-#### Then create the fields you'd like in your form:
+  `var validationRule: [Rule]? = [RequiredRule(message: "First Name is Required")]`
 
-```
-private struct FirstNameField: PopForm_FieldDataSource {
-  var theme: PopForm_FieldTheme = TextFieldTheme()
-  var apiKey: String = "first_name"
-  var placeholder: String = "First Name"
-  var validationRule: [Rule]? = [AlphaRule()]
-  var returnKey: UIReturnKeyType = UIReturnKeyType.next
-}
+  `var returnKey: UIReturnKeyType? = .next`
 
+  `var autoCapitilization: UITextAutocapitalizationType = .words`
 
-private struct LastNameField: PopForm_FieldDataSource {
-  var theme: PopForm_FieldTheme = TextFieldTheme()
-  var apiKey: String = "last_name"
-  var placeholder: String = "Last Name"
-  var returnKey: UIReturnKeyType = UIReturnKeyType.next
-}
+`}`
 
+Then add some field styling:
 
-private struct PasswordField: PopForm_FieldDataSource {
-  var theme: PopForm_FieldTheme = TextFieldTheme()
-  var apiKey: String = "password"
-  var placeholder: String = "Password"
-  var validationRule: [Rule]? = [PasswordRule()]
-  var isSecureEntry: Bool = true
-  var returnKey: UIReturnKeyType = UIReturnKeyType.done
-}
-```
-#### And then a general theme from for the form:
-```
-private struct FormTheme: PopForm_Theme {
-  var backgroundColor: UIColor = UIColor(r: 64, g: 196, b: 255)
-  var formColor: UIColor = UIColor(r: 130, g: 247, b: 255)
-}
-```
+`private struct TextFieldTheme: PopFormFieldTheme {`
 
-#### Lastly, create a full form model: 
-```
-struct LocalFormDataSource: PopForm_DataSource {
-  var fields: PopForm_Fields = [FirstNameField(),
-                                LastNameField(),
-                                PasswordField()]
+  `var focusedColor: UIColor = UIColor.lightGray`
 
-  var theme: PopForm_Theme = FormTheme()
-}
-```
+  `var textfieldFont: UIFont = UIFont.systemFont(ofSize: 15, weight: .light)`
 
-#### Then instanciate and set up the FormVC:
-```
-let form = PopForm_ViewController(dataSource: LocalFormDataSource())
-form.delegate = self
-```
+  `var borderOpacity: Float = 0.85`
 
-#### You'll hear back from the PopForm_ViewControllerDelegate if the form was correctly validated.
-```
-extension ViewController: PopForm_ViewControllerDelegate {
-  func formWasValidated(callback: PopForm_ValidationCallback) {
-  print(callback)
-  }
-}
-```
+  `var textAlignment: NSTextAlignment = .center`
+
+  `var borderIsUnderline: Bool = false`
+
+  `var errorColor: UIColor = .red`
+
+  `var backgroundColor: UIColor = UIColor.white`
+
+  `var textColor: UIColor = UIColor.black`
+
+  `var placeholderTextColor: UIColor = UIColor.lightGray`
+
+  `var borderColor: UIColor = UIColor.lightGray`
+
+  `var borderWidth: CGFloat = 0.5`
+
+  `var height: CGFloat = 65`
+
+  `var textFieldHeight: CGFloat = 60`
+
+  `var textViewHeight: CGFloat = 120`
+
+  `var cursorColor: UIColor = UIColor.blue`
+
+`}`
+
+Now add styling for the form itself:
+
+`private struct FormTheme: PopFormTheme {`
+
+  `var backgroundColor: UIColor = .white`
+
+  `var formColor: UIColor = .white`
+
+`}`
 
 
-## POPForm_ViewController Features
-`shouldValidateOnLastFieldReturnKeyTap` if set to false then the last item in the form won't trigger validation.
 
+Now create your form:
+
+`struct PersonalInformationForm: PopFormDataSource {`
+
+  `var fields: PopFormFields = [FirstName_Field(),`
+
+​                               `LastName_Field(),`
+
+​                               `Zip_Field(),`
+
+​                               `PhoneNumber_Field(),`
+
+​                               `Occupation_Field(),`
+
+​                               `Notes_Field(),`
+
+​                               `Birthday_Field()]`
+
+  `var theme: PopFormTheme = FormTheme()`
+
+`}`
+
+
+
+Lastly, create an instance of a *PopFormViewController* and pass the form datasource to it:
+
+  `private lazy var formVC: PopFormViewController = {`
+
+​    `let f = PopFormViewController(dataSource: formDataSource)`
+
+​    `f.delegate = self`
+
+​    `return f`
+
+  `}()`
