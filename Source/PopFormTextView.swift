@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A UITextView PopField
 public class PopFormTextView: UITextView {
 
   var dataSource: PopFormFieldDataSource! {

@@ -9,9 +9,14 @@
 import UIKit
 
 protocol PopFormPickerViewDelegate: class {
+
+  /// Triggered when a different value is selected
+  ///
+  /// - Parameter value: the selected value
   func formPicker(didSelectValue value:String)
 }
 
+/// The picker view to be set as an InputView to a popFormfield
 public class PopFormPickerView: UIPickerView {
   
   private var data: PopFormPickerViewDataSource
@@ -35,7 +40,7 @@ public class PopFormPickerView: UIPickerView {
     
   }
   
-  @objc func pickerTapped(_ sender: UITapGestureRecognizer){
+  @objc private func pickerTapped(_ sender: UITapGestureRecognizer){
     let rowHeight = self.rowSize(forComponent: 0).height
     let selectedRowFrame = self.bounds.insetBy(dx: 0.0, dy: (self.frame.height - rowHeight) / 2.0)
     let userTappedOnSelectedRow = selectedRowFrame.contains(sender.location(in: self))

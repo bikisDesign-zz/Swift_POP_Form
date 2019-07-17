@@ -8,6 +8,9 @@
 
 import Foundation
 
+
+/// The container of created information by the form
+/// Dates are converted to strings based on the convertion type set in the PopFormDatePickerPickerDataSource
 public struct Credentials {
   var data: [String: Any] = [:]
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+/// an array of PopFormfields
 public typealias PopFormFields = [PopFormFieldDataSource]
 
 /// The primary data source for each form

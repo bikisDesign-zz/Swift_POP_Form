@@ -9,13 +9,14 @@
 import UIKit
 import SwiftValidator
 
+/// The Form's Cell that contains a UITextView or UITextField
 public class PopFormTableViewCell: UITableViewCell {
 
   private enum BorderAnimState {
     case focused, errored, normal
   }
 
-  static var ReuseID: String = "FormTextFieldCell"
+  public static var ReuseID: String = "POPFormTextFieldCell"
 
   override public var reuseIdentifier: String? {
     return PopFormTableViewCell.ReuseID
@@ -78,7 +79,9 @@ public class PopFormTableViewCell: UITableViewCell {
   }
 
 
-  func animateStateChange(){
+  /// Force an animation state update
+  /// animation states include errored, unfocused and focsed
+  public func animateStateChange(){
     if let text = erroredText {
       UIView.animate(withDuration: 0.5) { // animate changes
         self.errorTitleLabel.text = text

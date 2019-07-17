@@ -9,8 +9,14 @@
 import UIKit
 import SwiftValidator
 
-protocol PopForm_ViewModelDelegate: class {
-  func registerForValidation(validatable: ValidatableField, rules: [Rule])
+public protocol PopForm_ViewModelDelegate: class {
+
+  /// register a specific field for validation
+  ///
+  /// - Parameters:
+  ///   - validatable: the field to be validated
+  ///   - rules: the rules to associate with the field
+  func registerForValidation(validatable: ValidatableField, rules: [Rule]?)
 
   func registerDatePickerForAction(datePicker: UIDatePicker)
 
@@ -19,7 +25,7 @@ protocol PopForm_ViewModelDelegate: class {
 
 public class PopForm_ViewModel: NSObject {
 
-  var delegate: PopForm_ViewModelDelegate?
+  public var delegate: PopForm_ViewModelDelegate?
 
   var dataSource: PopFormDataSource
 
@@ -27,7 +33,8 @@ public class PopForm_ViewModel: NSObject {
   
   weak var textViewDelegate: UITextViewDelegate?
 
-  var credentials = Credentials()
+  /// the entered credentials to this form
+  public var credentials = Credentials()
 
   init(dataSource: PopFormDataSource){
     self.dataSource = dataSource
