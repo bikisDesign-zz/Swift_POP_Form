@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PopFormViewController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/PopFormViewController" class="dashAnchor"></a>
+    <a title="PopFormViewController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/bikisDesign/Swift_POP_Form"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        PopFormViewController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/MinDateRule.html">MinDateRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormPickerView.html">PopFormPickerView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormTableViewCell.html">PopFormTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@Swift_POP_Form@objc(cs)PopFormTextField">PopFormTextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@Swift_POP_Form@objc(cs)PopFormTextView">PopFormTextView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormViewController.html">PopFormViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopForm_ViewModel.html">PopForm_ViewModel</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormDataSource.html">PopFormDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormDatePickerDataSource.html">PopFormDatePickerDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormFieldDataSource.html">PopFormFieldDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormFieldTheme.html">PopFormFieldTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormPickerViewDataSource.html">PopFormPickerViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormTheme.html">PopFormTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopForm_ViewModelDelegate.html">PopForm_ViewModelDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14Swift_POP_Form11CredentialsV">Credentials</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14Swift_POP_Form03PopC6Fieldsa">PopFormFields</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>PopFormViewController</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PopFormViewController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+
+                </div>
+              </div>
+            <p>Can be either embeded in another VC or presented on its own.
+By setting up the whole datasource elsewhere you can pass in an instance of <em>PopForm_DataSource</em> to create an instance of this viewcontroller</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC6update2dsyAA0dC10DataSource_p_tF"></a>
+                    <a name="//apple_ref/swift/Method/update(ds:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC6update2dsyAA0dC10DataSource_p_tF">update(ds:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>To change the form&rsquo;s dataSource entirely set this
+will reload all fields</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="nv">ds</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PopFormDataSource.html">PopFormDataSource</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ds</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the formDatasource to be updated</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC6update11credentialsyAA11CredentialsV_tF"></a>
+                    <a name="//apple_ref/swift/Method/update(credentials:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC6update11credentialsyAA11CredentialsV_tF">update(credentials:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>To update the credentials one or more field&rsquo;s update this. </p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="nv">credentials</span><span class="p">:</span> <span class="kt"><a href="../Structs.html#/s:14Swift_POP_Form11CredentialsV">Credentials</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>credentials</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the credentials to be merged</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC14getCredentialsAA0H0VyF"></a>
+                    <a name="//apple_ref/swift/Method/getCredentials()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC14getCredentialsAA0H0VyF">getCredentials()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets all created credentials from the form</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getCredentials</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs.html#/s:14Swift_POP_Form11CredentialsV">Credentials</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC10reloadDatayyF"></a>
+                    <a name="//apple_ref/swift/Method/reloadData()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC10reloadDatayyF">reloadData()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>To force a reload of all fields</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">reloadData</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC18isCredentialsEmptySbyF"></a>
+                    <a name="//apple_ref/swift/Method/isCredentialsEmpty()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC18isCredentialsEmptySbyF">isCredentialsEmpty()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Determines if no credentials have been created in the form</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isCredentialsEmpty</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Swift_POP_Form@objc(cs)PopFormViewController(im)loadView"></a>
+                    <a name="//apple_ref/swift/Method/loadView()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Swift_POP_Form@objc(cs)PopFormViewController(im)loadView">loadView()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">loadView</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Swift_POP_Form@objc(cs)PopFormViewController(im)viewWillAppear:"></a>
+                    <a name="//apple_ref/swift/Method/viewWillAppear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Swift_POP_Form@objc(cs)PopFormViewController(im)viewWillAppear:">viewWillAppear(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewWillAppear</span><span class="p">(</span><span class="n">_</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC08validateC0yyF"></a>
+                    <a name="//apple_ref/swift/Method/validateForm()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC08validateC0yyF">validateForm()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Force validation of the form</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validateForm</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC10formHeight12CoreGraphics7CGFloatVyF"></a>
+                    <a name="//apple_ref/swift/Method/formHeight()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC10formHeight12CoreGraphics7CGFloatVyF">formHeight()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sses the theme textViewHeight and textFieldHeight</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">formHeight</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Full height of the form</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC15setSelectionFor5fieldy0A9Validator11Validatable_Xl_tF"></a>
+                    <a name="//apple_ref/swift/Method/setSelectionFor(field:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC15setSelectionFor5fieldy0A9Validator11Validatable_Xl_tF">setSelectionFor(field:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Force selection of a field
+Will remove the erroredText if one exists</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setSelectionFor</span><span class="p">(</span><span class="nv">field</span><span class="p">:</span> <span class="kt">ValidatableField</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC17setDeselectionFor5fieldy0A9Validator11Validatable_Xl_tF"></a>
+                    <a name="//apple_ref/swift/Method/setDeselectionFor(field:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC17setDeselectionFor5fieldy0A9Validator11Validatable_Xl_tF">setDeselectionFor(field:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Force deselection of a field</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setDeselectionFor</span><span class="p">(</span><span class="nv">field</span><span class="p">:</span> <span class="kt">ValidatableField</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/TableViewDelegate"></a>
+                <a name="//apple_ref/swift/Section/TableViewDelegate" class="dashAnchor"></a>
+                <a href="#/TableViewDelegate">
+                  <h3 class="section-name">TableViewDelegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)tableView:heightForRowAtIndexPath:"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:heightForRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)tableView:heightForRowAtIndexPath:">tableView(_:heightForRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">heightForRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/TableViewDelegate2"></a>
+                <a name="//apple_ref/swift/Section/TableViewDelegate" class="dashAnchor"></a>
+                <a href="#/TableViewDelegate2">
+                  <h3 class="section-name">TableViewDelegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC18_ViewModelDelegateP21registerForValidation11validatable5rulesy0A9Validator11Validatable_Xl_SayAG4Rule_pGtF"></a>
+                    <a name="//apple_ref/swift/Method/registerForValidation(validatable:rules:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC18_ViewModelDelegateP21registerForValidation11validatable5rulesy0A9Validator11Validatable_Xl_SayAG4Rule_pGtF">registerForValidation(validatable:rules:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerForValidation</span><span class="p">(</span><span class="nv">validatable</span><span class="p">:</span> <span class="kt">ValidatableField</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:</span> <span class="p">[</span><span class="kt">Rule</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC27registerDatePickerForAction04dateI0ySo06UIDateI0C_tF"></a>
+                    <a name="//apple_ref/swift/Method/registerDatePickerForAction(datePicker:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC27registerDatePickerForAction04dateI0ySo06UIDateI0C_tF">registerDatePickerForAction(datePicker:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerDatePickerForAction</span><span class="p">(</span><span class="nv">datePicker</span><span class="p">:</span> <span class="kt">UIDatePicker</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC14ViewControllerC06pickerE14ValueDidChange5valueySS_tF"></a>
+                    <a name="//apple_ref/swift/Method/pickerViewValueDidChange(value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC14ViewControllerC06pickerE14ValueDidChange5valueySS_tF">pickerViewValueDidChange(value:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pickerViewValueDidChange</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/TextView%20Delegate"></a>
+                <a name="//apple_ref/swift/Section/TextView Delegate" class="dashAnchor"></a>
+                <a href="#/TextView%20Delegate">
+                  <h3 class="section-name">TextView Delegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textViewDidBeginEditing:"></a>
+                    <a name="//apple_ref/swift/Method/textViewDidBeginEditing(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textViewDidBeginEditing:">textViewDidBeginEditing(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">textViewDidBeginEditing</span><span class="p">(</span><span class="n">_</span> <span class="nv">textView</span><span class="p">:</span> <span class="kt">UITextView</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textViewDidEndEditing:"></a>
+                    <a name="//apple_ref/swift/Method/textViewDidEndEditing(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textViewDidEndEditing:">textViewDidEndEditing(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">textViewDidEndEditing</span><span class="p">(</span><span class="n">_</span> <span class="nv">textView</span><span class="p">:</span> <span class="kt">UITextView</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textView:shouldChangeTextInRange:replacementText:"></a>
+                    <a name="//apple_ref/swift/Method/textView(_:shouldChangeTextIn:replacementText:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textView:shouldChangeTextInRange:replacementText:">textView(_:shouldChangeTextIn:replacementText:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">textView</span><span class="p">(</span><span class="n">_</span> <span class="nv">textView</span><span class="p">:</span> <span class="kt">UITextView</span><span class="p">,</span> <span class="n">shouldChangeTextIn</span> <span class="nv">range</span><span class="p">:</span> <span class="kt">NSRange</span><span class="p">,</span> <span class="n">replacementText</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/TextField%20Delegate"></a>
+                <a name="//apple_ref/swift/Section/TextField Delegate" class="dashAnchor"></a>
+                <a href="#/TextField%20Delegate">
+                  <h3 class="section-name">TextField Delegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textFieldShouldReturn:"></a>
+                    <a name="//apple_ref/swift/Method/textFieldShouldReturn(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textFieldShouldReturn:">textFieldShouldReturn(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">textFieldShouldReturn</span><span class="p">(</span><span class="n">_</span> <span class="nv">textField</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textField:shouldChangeCharactersInRange:replacementString:"></a>
+                    <a name="//apple_ref/swift/Method/textField(_:shouldChangeCharactersIn:replacementString:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textField:shouldChangeCharactersInRange:replacementString:">textField(_:shouldChangeCharactersIn:replacementString:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">textField</span><span class="p">(</span><span class="n">_</span> <span class="nv">textField</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span> <span class="n">shouldChangeCharactersIn</span> <span class="nv">range</span><span class="p">:</span> <span class="kt">NSRange</span><span class="p">,</span> <span class="n">replacementString</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textFieldShouldBeginEditing:"></a>
+                    <a name="//apple_ref/swift/Method/textFieldShouldBeginEditing(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textFieldShouldBeginEditing:">textFieldShouldBeginEditing(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">textFieldShouldBeginEditing</span><span class="p">(</span><span class="n">_</span> <span class="nv">textField</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textFieldDidBeginEditing:"></a>
+                    <a name="//apple_ref/swift/Method/textFieldDidBeginEditing(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textFieldDidBeginEditing:">textFieldDidBeginEditing(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">textFieldDidBeginEditing</span><span class="p">(</span><span class="n">_</span> <span class="nv">textField</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textFieldDidEndEditing:"></a>
+                    <a name="//apple_ref/swift/Method/textFieldDidEndEditing(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@Swift_POP_Form@objc(cs)PopFormViewController(im)textFieldDidEndEditing:">textFieldDidEndEditing(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">textFieldDidEndEditing</span><span class="p">(</span><span class="n">_</span> <span class="nv">textField</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Validation%20Delegate"></a>
+                <a name="//apple_ref/swift/Section/Validation Delegate" class="dashAnchor"></a>
+                <a href="#/Validation%20Delegate">
+                  <h3 class="section-name">Validation Delegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SwiftValidator18ValidationDelegateP20validationSuccessfulyyF"></a>
+                    <a name="//apple_ref/swift/Method/validationSuccessful()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SwiftValidator18ValidationDelegateP20validationSuccessfulyyF">validationSuccessful()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validationSuccessful</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SwiftValidator18ValidationDelegateP16validationFailedyySayAA11Validatable_p_AA0C5ErrorCtGF"></a>
+                    <a name="//apple_ref/swift/Method/validationFailed(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SwiftValidator18ValidationDelegateP16validationFailedyySayAA11Validatable_p_AA0C5ErrorCtGF">validationFailed(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validationFailed</span><span class="p">(</span><span class="n">_</span> <span class="nv">errors</span><span class="p">:</span> <span class="p">[(</span><span class="kt">Validatable</span><span class="p">,</span> <span class="kt">ValidationError</span><span class="p">)])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Aaron Bikis</a>. All rights reserved. (Last updated: 2019-07-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
