@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/bikisDesign/Swift_POP_Form"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+          Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/MinDateRule.html">MinDateRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PopFormPickerView.html">PopFormPickerView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PopFormTableViewCell.html">PopFormTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/c:@M@Swift_POP_Form@objc(cs)PopFormTextField">PopFormTextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/c:@M@Swift_POP_Form@objc(cs)PopFormTextView">PopFormTextView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PopFormViewController.html">PopFormViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PopForm_ViewModel.html">PopForm_ViewModel</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/PopFormDataSource.html">PopFormDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/PopFormDatePickerDataSource.html">PopFormDatePickerDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/PopFormFieldDataSource.html">PopFormFieldDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/PopFormFieldTheme.html">PopFormFieldTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/PopFormPickerViewDataSource.html">PopFormPickerViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/PopFormTheme.html">PopFormTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/PopForm_ViewModelDelegate.html">PopForm_ViewModelDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs.html#/s:14Swift_POP_Form11CredentialsV">Credentials</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:14Swift_POP_Form03PopC6Fieldsa">PopFormFields</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p><strong>POP! A form builder written in Swift</strong></p>
+
+<p><a href="https://travis-ci.com/bikisDesign/Swift_POP_Form"><img src="https://travis-ci.com/bikisDesign/Swift_POP_Form.svg?branch=master" alt="Build Status"></a><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></p>
+
+<p>This is a basic form creation system that uses MVVM and POP to quickly create and customize iOS forms.</p>
+
+<p>It uses <a href="https://github.com/SwiftValidatorCommunity/SwiftValidator">SwiftValidator</a> and for it&rsquo;s validation.</p>
+
+<p>Here&rsquo;s an article I wrote on the architecture used to create it! <a href="https://medium.com/@aaron.bikis/coordinators-protocol-oriented-programming-and-mvvm-bullet-proof-architecture-with-swift-629dea5354ce">Medium</a></p>
+
+<p><strong>How do I use it?</strong></p>
+
+<p>Let&rsquo;s start by creating a field&rsquo;s datasource:</p>
+
+<p><code>private struct FirstName_Field: PopFormFieldDataSource {</code></p>
+
+<p><code>var prefilledText: String?</code></p>
+
+<p><code>var theme: PopFormFieldTheme = TextFieldTheme()</code></p>
+
+<p><code>var placeholder: String = &quot;First Name&quot;</code></p>
+
+<p><code>var apiKey: String = &quot;firstName&quot;</code></p>
+
+<p><code>var validationRule: [Rule]? = [RequiredRule(message: &quot;First Name is Required&quot;)]</code></p>
+
+<p><code>var returnKey: UIReturnKeyType? = .next</code></p>
+
+<p><code>var autoCapitilization: UITextAutocapitalizationType = .words</code></p>
+
+<p><code>}</code></p>
+
+<p>Then add some field styling:</p>
+
+<p><code>private struct TextFieldTheme: PopFormFieldTheme {</code></p>
+
+<p><code>var focusedColor: UIColor = UIColor.lightGray</code></p>
+
+<p><code>var textfieldFont: UIFont = UIFont.systemFont(ofSize: 15, weight: .light)</code></p>
+
+<p><code>var borderOpacity: Float = 0.85</code></p>
+
+<p><code>var textAlignment: NSTextAlignment = .center</code></p>
+
+<p><code>var borderIsUnderline: Bool = false</code></p>
+
+<p><code>var errorColor: UIColor = .red</code></p>
+
+<p><code>var backgroundColor: UIColor = UIColor.white</code></p>
+
+<p><code>var textColor: UIColor = UIColor.black</code></p>
+
+<p><code>var placeholderTextColor: UIColor = UIColor.lightGray</code></p>
+
+<p><code>var borderColor: UIColor = UIColor.lightGray</code></p>
+
+<p><code>var borderWidth: CGFloat = 0.5</code></p>
+
+<p><code>var height: CGFloat = 65</code></p>
+
+<p><code>var textFieldHeight: CGFloat = 60</code></p>
+
+<p><code>var textViewHeight: CGFloat = 120</code></p>
+
+<p><code>var cursorColor: UIColor = UIColor.blue</code></p>
+
+<p><code>}</code></p>
+
+<p>Now add styling for the form itself:</p>
+
+<p><code>private struct FormTheme: PopFormTheme {</code></p>
+
+<p><code>var backgroundColor: UIColor = .white</code></p>
+
+<p><code>var formColor: UIColor = .white</code></p>
+
+<p><code>}</code></p>
+
+<p>Now create your form:</p>
+
+<p><code>struct PersonalInformationForm: PopFormDataSource {</code></p>
+
+<p><code>var fields: PopFormFields = [FirstName_Field(),</code></p>
+
+<p>​                               <code>LastName_Field(),</code></p>
+
+<p>​                               <code>Zip_Field(),</code></p>
+
+<p>​                               <code>PhoneNumber_Field(),</code></p>
+
+<p>​                               <code>Occupation_Field(),</code></p>
+
+<p>​                               <code>Notes_Field(),</code></p>
+
+<p>​                               <code>Birthday_Field()]</code></p>
+
+<p><code>var theme: PopFormTheme = FormTheme()</code></p>
+
+<p><code>}</code></p>
+
+<p>Lastly, create an instance of a <em>PopFormViewController</em> and pass the form datasource to it:</p>
+
+<p><code>private lazy var formVC: PopFormViewController = {</code></p>
+
+<p>​    <code>let f = PopFormViewController(dataSource: formDataSource)</code></p>
+
+<p>​    <code>f.delegate = self</code></p>
+
+<p>​    <code>return f</code></p>
+
+<p><code>}()</code></p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Aaron Bikis</a>. All rights reserved. (Last updated: 2019-07-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
