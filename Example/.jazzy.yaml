@@ -1,5 +1,5 @@
 clean: true
-output: docs/swift_output
+output: ../docs/
 github_url: "https://github.com/bikisDesign/Swift_POP_Form"
 readme: ../README.md
 author: "Aaron Bikis"
