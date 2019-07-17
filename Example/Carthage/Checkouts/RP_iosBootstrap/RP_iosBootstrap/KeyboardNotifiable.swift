@@ -30,16 +30,16 @@ public protocol KeyboardNotifiable {
 extension KeyboardNotifiable where Self: UIViewController {
   public func registerForKeyboardNotifications(with selector: Selector){
     let center = NotificationCenter.default
-    center.addObserver(self, selector: selector, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    center.addObserver(self, selector: selector, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    center.addObserver(self, selector: selector, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+    center.addObserver(self, selector: selector, name: UIResponder.keyboardWillShowNotification, object: nil)
+    center.addObserver(self, selector: selector, name: UIResponder.keyboardWillHideNotification, object: nil)
+    center.addObserver(self, selector: selector, name: UIResponder.keyboardDidHideNotification, object: nil)
   }
   
   public func unregisterForKeyboardNotifications(){
     let center = NotificationCenter.default
-    center.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    center.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    center.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+    center.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    center.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    center.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
   }
 }
 

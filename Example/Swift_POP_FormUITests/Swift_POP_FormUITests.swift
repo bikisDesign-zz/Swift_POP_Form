@@ -24,7 +24,6 @@ class Swift_POP_FormUITests: XCTestCase {
 
   func testScroll(){
     let app = XCUIApplication()
-    app.navigationBars.buttons
   }
 
 }

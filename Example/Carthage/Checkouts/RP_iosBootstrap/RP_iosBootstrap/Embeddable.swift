@@ -14,11 +14,11 @@ extension UIViewController {
 	{
 		let container = parentView ?? self.view!
 
-		addChildViewController(vc)
+		addChild(vc)
 		container.addSubview(vc.view)
 		vc.view.translatesAutoresizingMaskIntoConstraints = false
 		vc.view.frame = parentView?.frame ?? self.view.frame
-		vc.didMove(toParentViewController: self)
+		vc.didMove(toParent: self)
 
 		//	Note: after this, save the controller reference
 		//	somewhere in calling scope
@@ -27,11 +27,11 @@ extension UIViewController {
 	public func unembed(controller: UIViewController?) {
 		guard let controller = controller else { return }
 
-		controller.willMove(toParentViewController: nil)
+		controller.willMove(toParent: nil)
 		if controller.isViewLoaded {
 			controller.view.removeFromSuperview()
 		}
-		controller.removeFromParentViewController()
+		controller.removeFromParent()
 
 		//	Note: don't forget to nullify your own controller instance
 		//	in order to clear it out from memory

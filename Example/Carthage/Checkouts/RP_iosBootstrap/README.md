@@ -16,7 +16,7 @@ A framework filled with protocols I use all the time.
  Quick helper to look up a file in the documents directory
  
 ### UIColor ext
- Enable support for instanciation with RGB values 
+RGB and Hex helpers
 
 ### Reachable
 No longer supported. Use alamofire instead  
