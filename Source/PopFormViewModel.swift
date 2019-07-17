@@ -23,6 +23,7 @@ final class PopForm_ViewModel: NSObject {
   var dataSource: PopFormDataSource
 
   weak var textFieldDelegate: UITextFieldDelegate?
+  
   weak var textViewDelegate: UITextViewDelegate?
 
   var credentials = Credentials()

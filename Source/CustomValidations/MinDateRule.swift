@@ -11,9 +11,10 @@ import Foundation
 /**
  `MinDateRule` is a subclass of `Rule`. It is used to verify that a field has a date that is after the set minimum date
  */
-public class MinDateRule: Rule, DateConvertable {
+public class MinDateRule: Rule {
   private var minDate: Date
   private var message: String
+  private var dateFormat: String
   
   /**
    Initializes a `MinDateRule` object to verify that field has valid date.
@@ -21,7 +22,7 @@ public class MinDateRule: Rule, DateConvertable {
    - parameter years: Int (negative value) the minimum number of years from todays date
    - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
    */
-  public init(years: Int = 18, message: String = "Must be at least 18 years old"){
+  public init(years: Int = 18, message: String = "Must be at least 18 years old", dateFormat: String){
     self.message = message
     let date = Date()
     let calendar = Calendar(identifier: .gregorian)
@@ -29,6 +30,7 @@ public class MinDateRule: Rule, DateConvertable {
     components.year = -years
     let minimumDate = calendar.date(byAdding: components, to: date)
     self.minDate = minimumDate!
+    self.dateFormat = dateFormat
   }
   
   /**
@@ -38,8 +40,10 @@ public class MinDateRule: Rule, DateConvertable {
    */
   public func validate(_ value: String) -> Bool {
     guard value != "" else { return false }
-    let date = convertToDate(value)
-    let comparision = date?.compare(minDate)
+    let df = DateFormatter()
+    df.dateFormat = dateFormat
+    guard let date = df.date(from: value) else { fatalError("incorrect date format passed to MinDateRule") }
+    let comparision = date.compare(minDate)
     if comparision == ComparisonResult.orderedAscending {
       return true
     }

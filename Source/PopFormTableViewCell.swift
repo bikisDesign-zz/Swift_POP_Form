@@ -20,6 +20,12 @@ final class PopFormTableViewCell: UITableViewCell {
     return PopFormTableViewCell.ReuseID
   }
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    textField.inputView = nil
+    textView.inputView = nil
+  }
+
   var fieldDataSource: PopFormFieldDataSource!
 
   var erroredText: String?
@@ -28,30 +34,31 @@ final class PopFormTableViewCell: UITableViewCell {
 
   lazy var textField: PopFormTextField = {
     let tf = PopFormTextField()
-    addSubview(tf)
+    tf.translatesAutoresizingMaskIntoConstraints = false
+    contentView.addSubview(tf)
     return tf
   }()
 
   lazy var textView: PopFormTextView = {
     let tv = PopFormTextView()
-    addSubview(tv)
+    tv.translatesAutoresizingMaskIntoConstraints = false
+    contentView.addSubview(tv)
     return tv
   }()
 
   private lazy var errorTitleLabel: UILabel = {
     let l = UILabel()
-    l.textColor = self.fieldDataSource.theme.errorColor
-    l.font = self.fieldDataSource.theme.textfieldFont
+    l.translatesAutoresizingMaskIntoConstraints = false
     l.alpha = 1
-    addSubview(l)
+    contentView.addSubview(l)
     return l
   }()
 
   private lazy var borderLine: CAShapeLayer = {
     let l = CAShapeLayer()
     let linePath = UIBezierPath()
-    linePath.move(to: CGPoint(x: 15, y: frame.height - 30))
-    linePath.addLine(to: CGPoint(x: frame.width - 30, y: frame.height - 30)) // set it 5 below the textfield
+    linePath.move(to: CGPoint(x: 15, y: self.contentView.frame.height - 30))
+    linePath.addLine(to: CGPoint(x: self.contentView.frame.width - 15, y: self.contentView.frame.height - 30)) // set it 5 below the textfield
     l.path = linePath.cgPath
     layer.addSublayer(l)
     return l
@@ -114,14 +121,15 @@ final class PopFormTableViewCell: UITableViewCell {
 
   private func configureViewLayout(){
     NSLayoutConstraint
-      .activate([errorTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-                 errorTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
-                 errorTitleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+      .activate([errorTitleLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+                 errorTitleLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+                 errorTitleLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor)
         ])
   }
 
   func setField(for dataSource: PopFormFieldDataSource, prefillText: String) -> ValidatableField {
     setGenericView(for: dataSource)
+    errorTitleLabel.font = dataSource.theme.textfieldFont
     if dataSource.isTextView {
       setTextView(with: prefillText)
       return textView
@@ -147,15 +155,16 @@ final class PopFormTableViewCell: UITableViewCell {
       textView.text = fieldDataSource.placeholder
       textView.textColor = fieldDataSource.theme.placeholderTextColor
     }
-    addSubview(textView)
+    contentView.addSubview(textView)
     textField.removeFromSuperview()
 
     textFieldConstraints?.forEach({ $0.isActive = false })
 
-    textViewConstraints = [textView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                           textView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15),
-                           textView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15),
-                           textView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 35)]
+    textViewConstraints = [textView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+                           textView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+                           textView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+                           textView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -35)
+    ]
 
     NSLayoutConstraint.activate(textViewConstraints!)
     setErrorLabelConstraint(forTextField: false)
@@ -166,17 +175,17 @@ final class PopFormTableViewCell: UITableViewCell {
     if prefilledText !=  "" {
       textField.text = prefilledText
     }
-    addSubview(textField)
+    contentView.addSubview(textField)
     textView.removeFromSuperview()
 
     if textViewConstraints != nil {
       NSLayoutConstraint.deactivate(textViewConstraints!)
     }
 
-    textFieldConstraints = [textField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                            textField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15),
-                            textField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15),
-                            textField.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 35)]
+    textFieldConstraints = [textField.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+                            textField.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+                            textField.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+                            textField.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -35)]
 
     NSLayoutConstraint.activate(textFieldConstraints!)
 

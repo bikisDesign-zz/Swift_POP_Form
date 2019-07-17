@@ -40,6 +40,8 @@ final class PopFormViewController: UIViewController {
     tv.dataSource = viewModel
     tv.backgroundColor = viewModel.dataSource.theme.backgroundColor
     tv.translatesAutoresizingMaskIntoConstraints = false
+    tv.contentInset = UIEdgeInsets.init(top: 50, left: 0, bottom: 0, right: 0)
+    tv.scrollIndicatorInsets = tv.contentInset
     tv.separatorStyle = .none
     tv.register(PopFormTableViewCell.self, forCellReuseIdentifier: PopFormTableViewCell.ReuseID)
     return tv
@@ -89,14 +91,21 @@ final class PopFormViewController: UIViewController {
     return viewModel.credentials.data.isEmpty
   }
 
+
   override func loadView() {
     view = UIView()
     view.backgroundColor = UIColor.clear
     view.translatesAutoresizingMaskIntoConstraints = false
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     addSubviews()
     configureViewLayout()
+  }
+
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: animated)
   }
 
 
@@ -113,13 +122,13 @@ final class PopFormViewController: UIViewController {
 
   @objc private func keyboardWillShowOrHide(_ notification: NSNotification) {
     let userInfo = notification.userInfo!
-    let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-    let rawAnimationCurveValue = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue
+    let animationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+    let rawAnimationCurveValue = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue
 
     let animationCurve = UIView.AnimationOptions(rawValue: rawAnimationCurveValue)
     // Convert the keyboard frame from screen to view coordinates.
-    let keyboardScreenBeginFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-    let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+    let keyboardScreenBeginFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+    let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 
     let keyboardViewBeginFrame = view.convert(keyboardScreenBeginFrame, from: view.window)
     let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
@@ -143,13 +152,13 @@ final class PopFormViewController: UIViewController {
       return $0 + $1.theme.textFieldHeight }))
   }
 
-  private func getIndexPath(for field: ValidatableField) -> IndexPath {
+  private func getIndexPath(for field: ValidatableField) -> IndexPath? {
     let childField = field as? UIView
-    guard let cell = childField?.superview as? PopFormTableViewCell else {
+    guard let cell = childField?.superview?.superview as? PopFormTableViewCell else {
       fatalError() }
 
     guard let currentIndex = tableView.indexPath(for: cell) else {
-      fatalError("cell does not exist") }
+      return nil }
 
     return currentIndex
   }
@@ -196,7 +205,8 @@ final class PopFormViewController: UIViewController {
   }
 
   func setSelectionFor(field: ValidatableField){
-    currentIndexPath = getIndexPath(for: field)
+    guard let indexPath = getIndexPath(for: field) else { return }
+    currentIndexPath = indexPath
     let cell = tableView.cellForRow(at: currentIndexPath) as! PopFormTableViewCell
     cell.isCurrentlyFocused = true
     cell.erroredText = nil
@@ -208,7 +218,7 @@ final class PopFormViewController: UIViewController {
   }
 
   func setDeselectionFor(field: ValidatableField){
-    let indexPathForUnselectedCell = getIndexPath(for: field)
+    guard let indexPathForUnselectedCell = getIndexPath(for: field) else { return }
     let cell = tableView.cellForRow(at: indexPathForUnselectedCell) as! PopFormTableViewCell
     cell.isCurrentlyFocused = false
     cell.animateStateChange()
@@ -260,7 +270,7 @@ extension PopFormViewController: UITextViewDelegate {
   func textViewDidEndEditing(_ textView: UITextView) {
     setDeselectionFor(field: textView)
     if textView.text.isEmpty {
-      let index = getIndexPath(for: textView)
+      guard let index = getIndexPath(for: textView) else { return }
       textView.text = viewModel.dataSource.fields[index.row].placeholder
       let fieldDatasource = viewModel.dataSource.fields[currentIndexPath.row]
       textView.textColor = fieldDatasource.theme.placeholderTextColor
@@ -282,7 +292,7 @@ extension PopFormViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     guard let popField = textField as? PopFormTextField else { return false }
     guard delegate?.textFieldShouldReturn(popField) == true else { return false }
-    let activeIndex = getIndexPath(for: textField)
+    guard let activeIndex = getIndexPath(for: textField) else { return false }
     let nextIndex = IndexPath(row: activeIndex.row + 1, section: activeIndex.section)
     let isLastField = viewModel.dataSource.fields.count == nextIndex.row
 
@@ -347,7 +357,7 @@ extension PopFormViewController: ValidationDelegate {
 
   private func invalidate(field: Validatable, erroredText: String){
     if let field = field as? PopFormTextField {
-      let cell = field.superview as! PopFormTableViewCell
+      let cell = field.superview?.superview as! PopFormTableViewCell /// cell's contentView
       cell.erroredText = erroredText
       cell.animateStateChange()
     }
