@@ -10,7 +10,7 @@ import UIKit
 
 /// the theme for a form field
 /// - Remark: Can be used for UITextField or UITextView fields
-protocol PopFormFieldTheme {
+public protocol PopFormFieldTheme {
 
   /// the backgroundColor of the field
   var backgroundColor: UIColor { get }

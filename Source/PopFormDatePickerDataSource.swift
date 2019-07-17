@@ -10,7 +10,7 @@ import Foundation
 
 /// The Datasource passed to a field containing a date picker
 /// Contains a StartDate, dateRange and shouldPrefillStartDate
-protocol PopFormDatePickerDataSource {
+public protocol PopFormDatePickerDataSource {
 
   /// the start date that the pickerView will be set to
   /// leave nil to set it to todays date

@@ -11,11 +11,34 @@ import SwiftValidator
 
 
 protocol PopFormViewControllerDelegate: class {
+  /// the form didn't pass validation
   func formWasInvalid()
+
+  /// the form passed validation
   func formWasValid(callback: Credentials)
+
+  /// The Form's editing status changed use this to animate the viewController's height so that the form's scrollview can update it's offset.
+  ///
+  /// - Parameters:
+  ///   - keyboardOriginDelta: The distance that the keyboard is covering from the bottom of the popViewController's bottom bounds
+  ///   - animationOptions: The animation options of the keyboard
+  ///   - duration: the duration in which the keyboard is animating
   func formChangedEditingStatus(keyboardOriginDelta: CGFloat, animationOptions: UIView.AnimationOptions, duration: Double)
+
+  /// Extends UITextFieldDelegate
+  ///
+  /// - Parameters:
+  ///   - field: the currently editing PopFormTextField
   func formTextFieldShouldChangeCharectersInRange(text: String, range: NSRange, replacment: String, field: PopFormTextField) -> Bool
+
+  /// Extends UITextFieldDelegate
+  ///
+  /// - Parameter field: the currently editing PopFormTextField
   func textFieldShouldBeginEditing(_ field: PopFormTextField) -> Bool
+
+  /// Extends UITextFieldDelegate
+  ///
+  /// - Parameter field: the currently editing PopFormTextField
   func textFieldShouldReturn(_ textField: PopFormTextField) -> Bool
 }
 
@@ -25,8 +48,11 @@ public class PopFormViewController: UIViewController {
 
   weak var delegate: PopFormViewControllerDelegate?
 
+  /// If you'd like the form's return key to have different functionality
+  /// set this to false and then use the textFieldShouldReturn(_ textField) callback
   var shouldValidateOnLastFieldReturnKeyTap = true
 
+  /// disables the ability for the form to scroll
   var isScrollEnabled = true {
     didSet {
       tableView.isScrollEnabled = isScrollEnabled
@@ -66,29 +92,41 @@ public class PopFormViewController: UIViewController {
     fatalError("init(coder: not supported")
   }
 
-  func update(ds: PopFormDataSource){
+  /// To change the form's dataSource entirely set this
+  /// will reload all fields
+  /// - Parameter ds: the formDatasource to be updated
+  public func update(ds: PopFormDataSource){
     viewModel.dataSource = ds
     DispatchQueue.main.async {
       self.tableView.reloadData()
     }
   }
 
-  func update(credentials: Credentials){
+
+  /// To update the credentials one or more field's update this. 
+  ///
+  /// - Parameter credentials: the credentials to be merged
+  public func update(credentials: Credentials){
     viewModel.credentials.data.merge(credentials.data, uniquingKeysWith: { (_, new) -> Any in
       return new
     })
   }
-  func getCredentials() -> Credentials {
+
+  /// Gets all created credentials from the form
+  public func getCredentials() -> Credentials {
     return viewModel.credentials
   }
 
-  func reloadData(){
+  /// To force a reload of all fields
+  public func reloadData(){
     DispatchQueue.main.async {
       self.tableView.reloadData()
     }
   }
 
-  func isCredentialsEmpty() -> Bool {
+
+  /// Determines if no credentials have been created in the form
+  public func isCredentialsEmpty() -> Bool {
     return viewModel.credentials.data.isEmpty
   }
 
@@ -141,11 +179,15 @@ public class PopFormViewController: UIViewController {
     delegate?.formChangedEditingStatus(keyboardOriginDelta: originDelta, animationOptions: animationOptions, duration: animationDuration)
   }
   
-  func validateForm(){
+  /// Force validation of the form
+  public func validateForm(){
     validator.validate(self)
   }
 
-  func formHeight() -> CGFloat {
+  /// Sses the theme textViewHeight and textFieldHeight
+  ///
+  /// - Returns: Full height of the form
+  public func formHeight() -> CGFloat {
     return CGFloat(viewModel.dataSource.fields.reduce(CGFloat(0), {
       if $1.isTextView {
         return $0 + $1.theme.textViewHeight
@@ -205,7 +247,10 @@ public class PopFormViewController: UIViewController {
     return true
   }
 
-  func setSelectionFor(field: ValidatableField){
+
+  /// Force selection of a field
+  /// Will remove the erroredText if one exists
+  public func setSelectionFor(field: ValidatableField){
     guard let indexPath = getIndexPath(for: field) else { return }
     currentIndexPath = indexPath
     let cell = tableView.cellForRow(at: currentIndexPath) as! PopFormTableViewCell
@@ -218,7 +263,9 @@ public class PopFormViewController: UIViewController {
     }
   }
 
-  func setDeselectionFor(field: ValidatableField){
+
+  /// Force deselection of a field
+  public func setDeselectionFor(field: ValidatableField){
     guard let indexPathForUnselectedCell = getIndexPath(for: field) else { return }
     let cell = tableView.cellForRow(at: indexPathForUnselectedCell) as! PopFormTableViewCell
     cell.isCurrentlyFocused = false

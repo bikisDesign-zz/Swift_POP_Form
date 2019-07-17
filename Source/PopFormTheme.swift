@@ -10,7 +10,7 @@ import UIKit
 
 /// The general theme of a form
 /// currently supports backgroundColor and formColor
-protocol PopFormTheme {
+public protocol PopFormTheme {
 
   /// the background color of the form
   var backgroundColor: UIColor { get }

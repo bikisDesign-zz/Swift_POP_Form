@@ -9,7 +9,7 @@
 import Foundation
 
 /// The Datasource passed to a field containing a pickerview
-protocol PopFormPickerViewDataSource {
+public protocol PopFormPickerViewDataSource {
   /// the content to fill the picker view (**currently only supports a single list**)
   var content: [String] { get set }
 }

@@ -85,7 +85,6 @@ private struct BirthdayDatePickerDataSource: PopFormDatePickerDataSource {
 
 
 //MARK: Fields
-
 private struct FirstName_Field: PopFormFieldDataSource {
   var prefilledText: String?
 
