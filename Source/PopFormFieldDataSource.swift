@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftValidator
 
 /// The data source of all fields in a PopForm
 /// Create instances that conform to this protocol and use them to create an instance of *PopForm_Datasource* for PopForm_ViewController's ViewModel

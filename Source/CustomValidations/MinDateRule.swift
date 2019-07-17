@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftValidator
 
 /**
  `MinDateRule` is a subclass of `Rule`. It is used to verify that a field has a date that is after the set minimum date

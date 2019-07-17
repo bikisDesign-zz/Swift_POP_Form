@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftValidator
 
 final class PopFormTableViewCell: UITableViewCell {
 

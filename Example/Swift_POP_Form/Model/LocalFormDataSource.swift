@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftValidator
 
 struct LocalFormDataSource: PopFormDataSource {
   var fields: PopFormFields = [FirstName_Field(),

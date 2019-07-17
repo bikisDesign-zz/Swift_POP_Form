@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftValidator
 
 protocol PopForm_ViewModelDelegate: class {
   func registerForValidation(validatable: ValidatableField, rules: [Rule])
