@@ -1,0 +1,6 @@
+clean: true
+output: docs/swift_output
+github_url: "https://github.com/bikisDesign/Swift_POP_Form"
+readme: ../README.md
+author: "Aaron Bikis"
+min_acl: public
