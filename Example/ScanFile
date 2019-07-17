@@ -1,5 +1,5 @@
 scheme("Swift_POP_Form")
-devices(["iPhone 6", "iPhone X", "iPhone XR"])
+devices(["iPhone X", "iPhone XR"])
 
 clean(true)
 
