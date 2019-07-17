@@ -9,3 +9,4 @@ xcode_sdk: iphonesimulator11.0
 #   fastlane scan - runs the application tests
 script:
 - fastlane scan
+- fasltane jazzy

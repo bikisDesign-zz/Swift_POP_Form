@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MinDateRule Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MinDateRule" class="dashAnchor"></a>
+    <a title="MinDateRule Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/bikisDesign/Swift_POP_Form"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MinDateRule Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/MinDateRule.html">MinDateRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormPickerView.html">PopFormPickerView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormTableViewCell.html">PopFormTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@Swift_POP_Form@objc(cs)PopFormTextField">PopFormTextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@Swift_POP_Form@objc(cs)PopFormTextView">PopFormTextView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormViewController.html">PopFormViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopForm_ViewModel.html">PopForm_ViewModel</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormDataSource.html">PopFormDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormDatePickerDataSource.html">PopFormDatePickerDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormFieldDataSource.html">PopFormFieldDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormFieldTheme.html">PopFormFieldTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormPickerViewDataSource.html">PopFormPickerViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormTheme.html">PopFormTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopForm_ViewModelDelegate.html">PopForm_ViewModelDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14Swift_POP_Form11CredentialsV">Credentials</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14Swift_POP_Form03PopC6Fieldsa">PopFormFields</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MinDateRule</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MinDateRule</span> <span class="p">:</span> <span class="kt">Rule</span></code></pre>
+
+                </div>
+              </div>
+            <p><code>MinDateRule</code> is a subclass of <code>Rule</code>. It is used to verify that a field has a date that is after the set minimum date</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form11MinDateRuleC5years7message10dateFormatACSi_S2Stcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(years:message:dateFormat:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form11MinDateRuleC5years7message10dateFormatACSi_S2Stcfc">init(years:message:dateFormat:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a <code>MinDateRule</code> object to verify that field has valid date.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">years</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Must be at least 18 years old"</span><span class="p">,</span> <span class="nv">dateFormat</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>message</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>String of error message.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>years</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Int (negative value) the minimum number of years from todays date</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An initialized object, or nil if an object could not be created for some reason that would not result in an exception.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form11MinDateRuleC8validateySbSSF"></a>
+                    <a name="//apple_ref/swift/Method/validate(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form11MinDateRuleC8validateySbSSF">validate(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Validates a field.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>String to checked for validation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A boolean value. True if validation is successful; False if validation fails.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form11MinDateRuleC12errorMessageSSyF"></a>
+                    <a name="//apple_ref/swift/Method/errorMessage()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form11MinDateRuleC12errorMessageSSyF">errorMessage()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Displays error message when field has failed validation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">errorMessage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>String of error message.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Aaron Bikis</a>. All rights reserved. (Last updated: 2019-07-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -288,15 +288,15 @@ extension PopFormViewController: UITableViewDelegate {
 }
 
 extension PopFormViewController: PopForm_ViewModelDelegate {
-  func registerForValidation(validatable: ValidatableField, rules: [Rule]) {
+  public func registerForValidation(validatable: ValidatableField, rules: [Rule]) {
     validator.registerField(validatable, rules: rules)
   }
 
-  func registerDatePickerForAction(datePicker: UIDatePicker) {
+  public func registerDatePickerForAction(datePicker: UIDatePicker) {
     datePicker.addTarget(self, action: #selector(valueChangedFor(_:)), for: .valueChanged)
   }
 
-  func pickerViewValueDidChange(value: String) {
+  public func pickerViewValueDidChange(value: String) {
     let cell = tableView.cellForRow(at: currentIndexPath) as! PopFormTableViewCell
     cell.textField.text = value
     setCredentials(credential: value)

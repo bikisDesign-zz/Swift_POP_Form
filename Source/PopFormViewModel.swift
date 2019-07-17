@@ -16,7 +16,7 @@ public protocol PopForm_ViewModelDelegate: class {
   /// - Parameters:
   ///   - validatable: the field to be validated
   ///   - rules: the rules to associate with the field
-  func registerForValidation(validatable: ValidatableField, rules: [Rule]?)
+  func registerForValidation(validatable: ValidatableField, rules: [Rule])
 
   func registerDatePickerForAction(datePicker: UIDatePicker)
 
