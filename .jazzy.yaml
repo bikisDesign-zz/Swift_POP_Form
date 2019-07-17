@@ -1,0 +1,9 @@
+jazzy \
+  --clean \
+  --author Rose&Pine.io \
+  --author_url https://github.com/bikisDesign \
+  --github_url https://github.com/bikisDesign \
+  --module-version 2.0 \
+  --xcodebuild-arguments -scheme \
+  --module Swift_POP_Form \
+  --output docs/swift_output \
