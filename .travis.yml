@@ -9,4 +9,13 @@ xcode_sdk: iphonesimulator11.0
 #   fastlane scan - runs the application tests
 script:
 - fastlane scan
-- fasltane jazzy
+after_success:
+    - gem install jazzy
+    - fastlane jazzy
+  deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+  local-dir: docs
+  on:
+    branch: master
