@@ -1,9 +1,0 @@
-{
-  "commitish" : "f26e82de233d6321e0c3cccbc5c6ee56d5a7b456",
-  "iOS" : [
-    {
-      "name" : "RP_iosBootstrap",
-      "hash" : "744588e16547d138532a4b366a9566cf5732f15129639c489a5a93ed9a6d8208"
-    }
-  ]
-}

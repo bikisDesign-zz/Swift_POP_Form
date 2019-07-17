@@ -89,6 +89,7 @@ class FullPageFormViewController: UIViewController, PopFormViewControllerDelegat
     print(callback)
     let ac = UIAlertController(title: "All Fields Done Gone Valid", message: "POP", preferredStyle: .alert)
     let action = UIAlertAction(title: "Rad!", style: .destructive, handler: nil)
+    ac.addAction(action)
     present(ac, animated: true, completion: nil)
   }
 

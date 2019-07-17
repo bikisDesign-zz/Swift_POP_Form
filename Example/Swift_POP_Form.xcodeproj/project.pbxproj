@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -54,6 +54,7 @@
 		51BE7AB322DECF3B00C58CD1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BE7A9822DECF3A00C58CD1 /* Rule.swift */; };
 		51BE7AB422DECF3B00C58CD1 /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BE7A9922DECF3B00C58CD1 /* PhoneNumberRule.swift */; };
 		51BE7AB822DECF5300C58CD1 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BE7AB722DECF5300C58CD1 /* Validatable.swift */; };
+		51BE7ABA22DED11E00C58CD1 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BE7AB922DED11E00C58CD1 /* SwiftValidator.framework */; };
 		89C5B7E320AA4CA900528950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89C5B7E220AA4CA900528950 /* Assets.xcassets */; };
 		89C5B7E620AA4CA900528950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C5B7E420AA4CA900528950 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		51BE7A9822DECF3A00C58CD1 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rule.swift; path = ../../../../../../.Trash/Rule.swift; sourceTree = "<group>"; };
 		51BE7A9922DECF3B00C58CD1 /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneNumberRule.swift; path = ../../../../../../.Trash/PhoneNumberRule.swift; sourceTree = "<group>"; };
 		51BE7AB722DECF5300C58CD1 /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		51BE7AB922DED11E00C58CD1 /* SwiftValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftValidator.framework; path = Carthage/Build/iOS/SwiftValidator.framework; sourceTree = "<group>"; };
 		89C5B7D820AA4CA500528950 /* Swift_POP_Form.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_POP_Form.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C5B7DB20AA4CA500528950 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89C5B7E220AA4CA900528950 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51BE7ABA22DED11E00C58CD1 /* SwiftValidator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +273,7 @@
 		89C5B85620AA4F0700528950 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51BE7AB922DED11E00C58CD1 /* SwiftValidator.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -346,6 +350,7 @@
 				89C5B7D420AA4CA500528950 /* Sources */,
 				89C5B7D520AA4CA500528950 /* Frameworks */,
 				89C5B7D620AA4CA500528950 /* Resources */,
+				51BE7ABB22DED13600C58CD1 /* Carthage Run Script */,
 			);
 			buildRules = (
 			);
@@ -425,6 +430,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		51BE7ABB22DED13600C58CD1 /* Carthage Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/Carthage/FileLists/inputPaths.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "Carthage Run Script";
+			outputFileListPaths = (
+				"$(SRCROOT)/Carthage/FileLists/outputPaths.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks \n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51BE7A5F22DEBC1800C58CD1 /* Sources */ = {
