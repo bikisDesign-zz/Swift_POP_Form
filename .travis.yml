@@ -1,6 +1,6 @@
 # Configuration
 language: objective-c
-osx_image: xcode9.2
+osx_image: xcode10.2
 xcode_sdk: iphonesimulator11.0
 # Continuous Integration Script
 #   fastlane scan - runs the application tests
