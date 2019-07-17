@@ -1,4 +1,7 @@
-# Configuration
+
+before_install:
+  - gem update --system
+  - gem install bundler# Configuration
 language: objective-c
 osx_image: xcode10.2
 xcode_sdk: iphonesimulator11.0
