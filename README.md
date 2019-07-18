@@ -116,8 +116,7 @@ Lastly, create an instance of a *PopFormViewController* and pass the form dataso
 
   `}()`
 
-![Alt Text](https://raw.githubusercontent.com/bikisDesign/Swift_POP_Form/master/demo/popFormDemo.gif)
-
-
+![Sucess Demo](https://raw.githubusercontent.com/bikisDesign/Swift_POP_Form/master/demos/popFormDemo.gif)
+![Fail Demo](https://raw.githubusercontent.com/bikisDesign/Swift_POP_Form/master/demos/popFormFailDemo.gif)
 
 
