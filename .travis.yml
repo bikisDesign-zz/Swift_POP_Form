@@ -1,21 +1,22 @@
-
-before_install:
-  - cd Example
-  - carthage update
 language: objective-c
-osx_image: xcode10.2
-xcode_sdk: iphonesimulator11.0
-# Continuous Integration Script
-#   fastlane scan - runs the application tests
+osx_image: xcode10
+env:
+- DESTINATION="OS=11.0",name="iPhone 7" SCHEME="$SCHEME" SDK="$SDK"
+  global:
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - git submodule update --remote
+  - brew install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
+  - cd Example
+
+before_script:
+  - carthage bootstrap --no-use-binaries --platform iOS
+  
 script:
-- fastlane scan
-after_success:
-    - gem install jazzy
-    - fastlane jazzy
-  deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
-  local-dir: docs
-  on:
-    branch: master
+  - xcodebuild -project $PROJECT_NAME -scheme $PROJECT_SCHEME -sdk iphonesimulator test -parallelizeTargets | xcpretty -c && test ${PIPESTATUS[0]} -eq 0
+
+after_failure:
+  - cat $TMPDIR/carthage-*.log
