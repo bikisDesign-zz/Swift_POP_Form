@@ -1,5 +1,6 @@
-**POP! A form builder written in Swift**
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+**POP! A form builder written in Swift**
 
 A basic form creation system that uses MVVM and POP to quickly create and customize iOS forms
 
