@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PopForm_ViewModelDelegate Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/PopForm_ViewModelDelegate" class="dashAnchor"></a>
+    <a title="PopForm_ViewModelDelegate Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Swift_POP_Form Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/bikisDesign/Swift_POP_Form"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Swift_POP_Form Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        PopForm_ViewModelDelegate Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/MinDateRule.html">MinDateRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormPickerView.html">PopFormPickerView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormTableViewCell.html">PopFormTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@Swift_POP_Form@objc(cs)PopFormTextField">PopFormTextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@Swift_POP_Form@objc(cs)PopFormTextView">PopFormTextView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopFormViewController.html">PopFormViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopForm_ViewModel.html">PopForm_ViewModel</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormDataSource.html">PopFormDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormDatePickerDataSource.html">PopFormDatePickerDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormFieldDataSource.html">PopFormFieldDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormFieldTheme.html">PopFormFieldTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormPickerViewDataSource.html">PopFormPickerViewDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopFormTheme.html">PopFormTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/PopForm_ViewModelDelegate.html">PopForm_ViewModelDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:14Swift_POP_Form11CredentialsV">Credentials</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14Swift_POP_Form03PopC6Fieldsa">PopFormFields</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>PopForm_ViewModelDelegate</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">PopForm_ViewModelDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                </div>
+              </div>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC18_ViewModelDelegateP21registerForValidation11validatable5rulesy0A9Validator11Validatable_Xl_SayAG4Rule_pGtF"></a>
+                    <a name="//apple_ref/swift/Method/registerForValidation(validatable:rules:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC18_ViewModelDelegateP21registerForValidation11validatable5rulesy0A9Validator11Validatable_Xl_SayAG4Rule_pGtF">registerForValidation(validatable:rules:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>register a specific field for validation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerForValidation</span><span class="p">(</span><span class="nv">validatable</span><span class="p">:</span> <span class="kt">ValidatableField</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:</span> <span class="p">[</span><span class="kt">Rule</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>validatable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the field to be validated</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rules</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the rules to associate with the field</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC18_ViewModelDelegateP27registerDatePickerForAction04dateJ0ySo06UIDateJ0C_tF"></a>
+                    <a name="//apple_ref/swift/Method/registerDatePickerForAction(datePicker:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC18_ViewModelDelegateP27registerDatePickerForAction04dateJ0ySo06UIDateJ0C_tF">registerDatePickerForAction(datePicker:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerDatePickerForAction</span><span class="p">(</span><span class="nv">datePicker</span><span class="p">:</span> <span class="kt">UIDatePicker</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14Swift_POP_Form03PopC18_ViewModelDelegateP06pickerE14ValueDidChange5valueySS_tF"></a>
+                    <a name="//apple_ref/swift/Method/pickerViewValueDidChange(value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14Swift_POP_Form03PopC18_ViewModelDelegateP06pickerE14ValueDidChange5valueySS_tF">pickerViewValueDidChange(value:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">pickerViewValueDidChange</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Aaron Bikis</a>. All rights reserved. (Last updated: 2019-07-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
